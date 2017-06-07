@@ -30,10 +30,8 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "sequel"
-  spec.add_dependency "dry-initializer"
-  spec.add_dependency 'dry-types'
   spec.add_dependency 'oga'
-  spec.add_dependency 'httpclient'
+  spec.add_dependency 'rest-client'
 
   spec.add_development_dependency "bundler", "~> 1.14"
   spec.add_development_dependency "rake", "~> 10.0"

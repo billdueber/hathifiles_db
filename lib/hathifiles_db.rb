@@ -2,7 +2,7 @@ require "hathifiles_db/version"
 require 'hathifiles_db/fill_ht_constants_codes'
 require 'hathifiles_db/schema'
 require 'oga'
-require 'httpclient'
+require 'rest-client'
 
 
 
@@ -59,7 +59,7 @@ class HathifilesDB
   Link = Struct.new(:url, :name, :type, :datestamp)
 
   def all_file_download_links
-    doc   = Oga::parse_html(HTTPClient.new.get_content(URL))
+    doc   = Oga::parse_html(RestClient.get(URL).body)
     links = doc.css('a').find_all {|a| a.text =~ /hathi_(?:full|upd)/}
     links.map do |a|
       url       = a.attr('href')
@@ -72,9 +72,23 @@ class HathifilesDB
 
   end
 
-  def update
-
+  def update_from_uri(uri)
+    puts uri
+    raw = RestClient::Request.execute(
+      method: :get,
+      url: uri,
+      raw_response: true)
+    update_from_gzfile(raw.path)
   end
 
+  def update_from_gzfile(path)
+    Zlib::GzipReader.new(File.open(path, 'rb')).each_line do |line|
+      HathifilesDB::HTID.new_from_line(line).save
+    end
+  end
+
+  def update
+    update_links.each {|uri| update_from_uri(uri)}
+  end
 
 end
