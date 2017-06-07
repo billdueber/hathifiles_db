@@ -4,10 +4,9 @@ require 'json'
 
 class HathifilesDB
   class FillHTConstantCodes
-    attr_reader :db
-    def initialize(db:)
-      @db = db
-    end
+
+    include Inject["db"]
+
 
     def fill_all
       fill_source_codes

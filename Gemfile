@@ -1,4 +1,6 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in hathifiles_db.gemspec
-gemspec
+gem 'dry-auto_inject'
+gem 'rest-client'
+gem 'sequel'
+gem 'oga'
