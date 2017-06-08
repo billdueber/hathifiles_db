@@ -67,7 +67,9 @@ class HathifilesDB
 
       def create_htid
         db.create_table :htid do
-          String :htid, primary_key: true
+          String :htid
+          index :htid, unique: true
+
           TrueClass :allow, index: true
 
           # foreign_key :rights_code, :rights_codes, key: :code, type: String, index: true

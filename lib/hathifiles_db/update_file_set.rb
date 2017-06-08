@@ -48,7 +48,7 @@ class HathifilesDB
       full             = most_recent_full_link
       upd              = all_links.find_all do |a|
         a.datestamp > last_update_date and
-            a.datestamp >= full.datestamp
+          a.datestamp >= full.datestamp
       end
     end
 
@@ -69,25 +69,6 @@ class HathifilesDB
     end
 
 
-    def drop_indexes_if_necessary
-      if full? or large?
-        schema = HathifilesDB::Schema.new
-        schema.drop_indexes
-        @dropped = true
-      else
-        @dropped = false
-      end
-      self
-    end
-
-    def add_indexes_if_necessary
-      if @dropped
-        schema = HathifilesDB::Schema.new
-        schema.add_indexes
-      end
-      self
-    end
-
     # Fetch whatever is at the end of the URI passed into
     # a temp file, and return the request handler to that
     # file
@@ -101,13 +82,26 @@ class HathifilesDB
           raw_response: true)
     end
 
-    def each
+    def open_gzip_file(path)
+      Zlib::GzipReader.new(File.open(path, 'rb'))
+    end
+
+    def full_file
+      return nil unless full?
+      ff = most_recent_full_link
+      LOG.info "Fetching full file #{ff.name}"
+      resp gzip_file_response_from_uri(ff.url)
+      LOG.info "Opening full file #{ff.name}"
+      open_gzip_file(resp.file.path)
+    end
+
+    def each_incremental_update_file
       return enum_for(:each) unless block_given?
-      update_links.each do |lnk|
+      update_links.reject{|ul| ul =~ /full/}.each do |lnk|
         LOG.info "Fetching #{lnk.name}"
         resp = gzip_file_response_from_uri(lnk.url)
         LOG.info "Processing #{lnk.name}"
-        yield Zlib::GzipReader.new(File.open(resp.file.path, 'rb'))
+        yield open_gzip_file(resp.file.path)
       end
     end
 

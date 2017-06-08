@@ -29,7 +29,7 @@ class HathifilesDB
   end
 
   def stdid
-    @stdid ||=  HathifilesDB::Schema::StdID.new
+    @stdid ||= HathifilesDB::Schema::StdID.new
   end
 
   def update_files
@@ -39,7 +39,6 @@ class HathifilesDB
   def schema
     @schema ||= HathifilesDB::Schema.new
   end
-
 
 
   # Try to submit a batch of main table (:htid) data
@@ -65,13 +64,13 @@ class HathifilesDB
 
 
   # What size batches are we going to try to send to the database?
-  SLICE_SIZES = [1000, 100]
+  SLICE_SIZES   = [1000, 100]
   LINES_TO_READ = 1000
 
   # Cycle through the downloaded file and submit batches of
   # data.
   def update_from_file_obj(file_obj)
-    total       = 0
+    total = 0
     file_obj.each_slice(LINES_TO_READ) do |lines|
       total       += lines.size
       insertables = lines.map {|x| HathifilesDB::SourceLine.new(x)}
@@ -89,9 +88,67 @@ class HathifilesDB
 
       stdid.delete_for_ids(htids)
       stdid.add(identifiers)
-      LOG.info "#{total} so far in this file" if (total > 0) and (total % 20_000 == 0)
+      LOG.info "#{total} so far in this file" if (total > 0) and (total % 50_000 == 0)
     end
     return total
+  end
+
+  def truncate_tables
+    LOG.info "Truncating db tables"
+    schema.truncate
+  end
+
+  def drop_even_main_index_for_full
+    LOG.info "Doing a full index. Dropping even the uniq htid index"
+    begin
+      db.alter_table(:htid) do
+        drop_index :htid
+      end
+    rescue Sequel::DatabaseError => e
+      if e.message =~ /no such index/
+        # do nothing; we're fine
+      else
+        raise e
+      end
+    end
+  end
+
+  def add_back_main_index
+    LOG.info "Adding back main index"
+    begin
+      db.alter_table(:htid) do
+        add_index :htid, unique: true
+      end
+    rescue =>  e # Index already existed
+    end
+
+  end
+
+  def should_drop_indexes?
+    update_files.full? or update_files.large?
+  end
+
+  def drop_indexes_if_necessary
+    if should_drop_indexes?
+      LOG.info "Lots to do. Dropping indexes to make it faster"
+      schema.drop_indexes
+    end
+  end
+
+  def add_indexes_if_necessary
+    if should_drop_indexes?
+      LOG.info "Adding indexes back in"
+      schema.add_indexes
+    end
+  end
+
+
+  def update_full
+    truncate_tables
+    drop_even_main_index_for_full
+    added = update_from_file_obj(update_files.full_file)
+    LOG.info "Indexed a total of #{added} lines from full file"
+    add_back_main_index
   end
 
   # Figure out what to update, and update it.
@@ -100,19 +157,23 @@ class HathifilesDB
       return
     end
 
+    drop_indexes_if_necessary
+
+
     if update_files.full?
-      LOG.info "Doing a full reindex. Truncating db tables"
-      schema.truncate
+      update_full
     end
 
-    update_files.drop_indexes_if_necessary
-    update_files.each do |file|
+    update_files.each_incremental_update_file do |file|
       added = update_from_file_obj(file)
       LOG.info "Indexed #{added} lines"
+      add_back_main_index # will only do anything after the first (full) file
     end
-    update_files.add_indexes_if_necessary
+
+    add_indexes_if_necessary
+
     bookkeeping.last_update = update_files.most_recent_date
   end
-  
+
 
 end

@@ -4,11 +4,11 @@ require 'sequel'
 require 'dry-auto_inject'
 
 
-connection_string = if defined? JRUBY_VERSION
-                      'jdbc:mysql://localhost/hathifiles?user=dueberb'
-                    else
-                      'mysql2://dueberb@localhost/hathifiles'
-                    end
+if defined? ARGV[0]
+  connection_string = ARGV[0]
+else
+  raise "Need to pass the connection string"
+end
 
 begin
   db = Sequel.connect(connection_string)
