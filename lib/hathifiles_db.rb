@@ -9,6 +9,7 @@ require 'hathifiles_db/sourceline'
 require 'hathifiles_db/update_file_set'
 require 'dry-auto_inject'
 require 'logger'
+require 'hathifiles_db/fullfile_import'
 
 class HathifilesDB
 
@@ -146,8 +147,9 @@ class HathifilesDB
   def update_full
     truncate_tables
     drop_even_main_index_for_full
-    added = update_from_file_obj(update_files.full_file)
-    LOG.info "Indexed a total of #{added} lines from full file"
+    LOG.info "Pulling down full file, dumping to file, and loading with raw import"
+    HathifilesDB::FullFileImport.new.transform_and_import(update_files.full_file)
+    LOG.info "Done with full file dump/import"
     add_back_main_index
   end
 

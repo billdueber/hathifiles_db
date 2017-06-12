@@ -83,21 +83,21 @@ class HathifilesDB
     end
 
     def open_gzip_file(path)
-      Zlib::GzipReader.new(File.open(path, 'rb'))
+      Zlib::GzipReader.new(File.open(path, 'rb'), encoding: 'utf-8')
     end
 
     def full_file
       return nil unless full?
       ff = most_recent_full_link
       LOG.info "Fetching full file #{ff.name}"
-      resp gzip_file_response_from_uri(ff.url)
+      resp = gzip_file_response_from_uri(ff.url)
       LOG.info "Opening full file #{ff.name}"
       open_gzip_file(resp.file.path)
     end
 
     def each_incremental_update_file
       return enum_for(:each) unless block_given?
-      update_links.reject{|ul| ul =~ /full/}.each do |lnk|
+      update_links.reject{|ul| ul.name =~ /full/}.each do |lnk|
         LOG.info "Fetching #{lnk.name}"
         resp = gzip_file_response_from_uri(lnk.url)
         LOG.info "Processing #{lnk.name}"
