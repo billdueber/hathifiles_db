@@ -150,7 +150,6 @@ class HathifilesDB
     LOG.info "Pulling down full file, dumping to file, and loading with bulk import"
     HathifilesDB::FullFileImport.new.transform_and_import(update_files.full_file)
     LOG.info "Done with full file dump and bulk import"
-    add_back_main_index
   end
 
   # Figure out what to update, and update it.

@@ -2,7 +2,14 @@
 
 This is a (slow) program that will (slowly) create, and later keep up-to-date,
 a simple sql database that reflects the information in the [HathiTrust
-hathifiles](https://www.hathitrust.org/hathifiles) ([description](https://www.hathitrust.org/hathifiles_description))
+hathifiles](https://www.hathitrust.org/hathifiles) ([description](https://www.hathitrust.org/hathifiles_description)).
+
+Downloading, processing, and importing the full file into a local mysql using jruby
+takes me about an hour (on a reasonably fast machine and network). Updating with the 
+incremental files takes me 3-4 minutes each.
+
+I'm sure there are speed improvements to be had, but I'm planning on running it in a 
+cronjob overnight so that's not a high priority right now.
 
 ## Creating or updating a database with hathifile data
 
@@ -14,10 +21,15 @@ gem install hathifiles_db
 # and in your path
 type sqlite3 # => /usr/bin/sqlite3
 
+
+# You might want to check out the help text first
+
+hathifiles help
+hathifiles help update
+
+
 # For simplicity create and update a local sqlite database in the current directory
 # We'll notice the database is empty and do all the schema creation
-#
-# For me, this take a couple hours and gives a file that's about 8.7GB
 
 hathifiles update --db='sqlite://hathifiles.db'
 
@@ -42,10 +54,7 @@ hathifiles update
 
 hathifiles update --force-reload
 
-# And help is available
 
-hathifiles help
-hathifiles help update
 
 ```
 
