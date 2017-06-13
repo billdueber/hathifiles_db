@@ -67,7 +67,7 @@ class HathifilesDB
 
           dump_to_htid(sl.main_hash)
           dump_to_stdid(sl.stdid)
-          LOG.info "...#{i / 1_000_000}M" if i > 0 and i % 1_000_000 == 0
+          LOG.info "...#{i / 1_000_000}M items" if i > 0 and i % 1_000_000 == 0
         end
         @htidfile.close
         @stdidfile.close
@@ -90,14 +90,14 @@ class HathifilesDB
       if is_mysql?
         push_into_mysql
       elsif is_sqlite?
-        push_into_db_sqlite
+        push_into_sqlite
       else
         raise "Don't know how to bulk-load into db type #{db.database_type}"
       end
     end
 
 
-    def push_into_db_sqlite
+    def push_into_sqlite
       dbname = db.uri.gsub(/\A.*?sqlite3?:\/\//, '')
       # system("echo", "-e", ".mode csv\\\\n.import ./htidfile.csv htid")
       IO.popen(["sqlite3", dbname], 'w+:utf-8') do |sqlite_client|

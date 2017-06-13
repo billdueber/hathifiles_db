@@ -1,4 +1,4 @@
-# HathifilesDB: create and keep up-to-date an sql version of the hathifiiles
+# HathifilesDB: create and keep up-to-date an sql version of the hathifiles
 
 This is a (slow) program that will (slowly) create, and later keep up-to-date,
 a simple sql database that reflects the information in the [HathiTrust
@@ -6,7 +6,8 @@ hathifiles](https://www.hathitrust.org/hathifiles) ([description](https://www.ha
 
 Downloading, processing, and importing the full file into a local mysql using jruby
 takes me about an hour (on a reasonably fast machine and network). Updating with the 
-incremental files takes me 3-4 minutes each.
+incremental files is much slower -- maybe 2500 records/minute, for me -- due to 
+having to constantly check and update the indexes.
 
 I'm sure there are speed improvements to be had, but I'm planning on running it in a 
 cronjob overnight so that's not a high priority right now.
@@ -53,7 +54,6 @@ hathifiles update
 # If for some reason you want to force a full update, you can set it
 
 hathifiles update --force-reload
-
 
 
 ```
@@ -147,25 +147,20 @@ nuanced as we now track, but it corresponds to what's in the hathifiles.
 for the item.
 * `reason_codes` gives insight into *why* a particular rights_code has been assigned.
 
+## Database-specific information
 
+### sqlite
 
+The bulk import facility (used for a full-file update) requires that the
+`sqlite3` executable be in your path. 
 
-## Installation
+A full sqlite database is about 6.8GB. 
 
-Add this line to your application's Gemfile:
+### mysql
 
-```ruby
-gem 'hathifiles_db'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install hathifiles_db
-
+The bulk import requires that the user be able to run `LOAD DATA INFILE`. If you're 
+running it yourself, you can disable protection for that functionality by
+starting it up with `mysql.server start --secure-file-priv=""`
 
 
 ## Contributing
