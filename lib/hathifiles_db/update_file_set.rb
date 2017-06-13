@@ -1,11 +1,11 @@
 require 'hathifiles_db/schema'
+require 'hathifiles_db/schema/bookkeeping'
 
 class HathifilesDB
 
 
 
   class UpdateFileSet
-    include Enumerable
     include Inject["db"]
 
 
@@ -44,12 +44,14 @@ class HathifilesDB
     # than the last update or the most recent full dump, whichever
     # is more recent
     def update_links
-      last_update_date = HathifilesDB::Schema::Bookkeeping.new.last_update
+      bk = HathifilesDB::Schema::Bookkeeping.new
+      last_update_date = bk.last_update
       full             = most_recent_full_link
       upd              = all_links.find_all do |a|
         a.datestamp > last_update_date and
           a.datestamp >= full.datestamp
       end
+      upd
     end
 
     def full?
@@ -68,6 +70,9 @@ class HathifilesDB
       update_links.last.datestamp
     end
 
+    def count
+      update_links.count
+    end
 
     # Fetch whatever is at the end of the URI passed into
     # a temp file, and return the request handler to that
@@ -91,12 +96,12 @@ class HathifilesDB
       ff = most_recent_full_link
       LOG.info "Fetching full file #{ff.name}"
       resp = gzip_file_response_from_uri(ff.url)
+
       LOG.info "Opening full file #{ff.name}"
       open_gzip_file(resp.file.path)
     end
 
     def each_incremental_update_file
-      return enum_for(:each) unless block_given?
       update_links.reject{|ul| ul.name =~ /full/}.each do |lnk|
         LOG.info "Fetching #{lnk.name}"
         resp = gzip_file_response_from_uri(lnk.url)

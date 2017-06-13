@@ -1,7 +1,8 @@
 $:.unshift File.dirname(__FILE__)
 
+require 'hathifiles_db/logger'
 require "hathifiles_db/version"
-require 'hathifiles_db/fill_ht_constants_codes'
+require 'hathifiles_db/fill_ht_constant_codes'
 require 'hathifiles_db/schema'
 require 'oga'
 require 'rest-client'
@@ -14,8 +15,6 @@ require 'hathifiles_db/fullfile_import'
 class HathifilesDB
 
   include Inject["db"]
-
-  LOG = Logger.new(STDERR)
 
   URL = 'https://www.hathitrust.org/hathifiles'
 
@@ -65,7 +64,7 @@ class HathifilesDB
 
 
   # What size batches are we going to try to send to the database?
-  SLICE_SIZES   = [1000, 100]
+  SLICE_SIZES   = [100]
   LINES_TO_READ = 1000
 
   # Cycle through the downloaded file and submit batches of
@@ -89,9 +88,9 @@ class HathifilesDB
 
       stdid.delete_for_ids(htids)
       stdid.add(identifiers)
-      LOG.info "#{total} so far in this file" if (total > 0) and (total % 50_000 == 0)
+      LOG.info "#{total} so far in this file" if (total > 0) and (total % 5_000 == 0)
     end
-    return total
+    total
   end
 
   def truncate_tables
@@ -100,7 +99,7 @@ class HathifilesDB
   end
 
   def drop_even_main_index_for_full
-    LOG.info "Doing a full index. Dropping even the uniq htid index"
+    LOG.info "Dropping the uniq htid index"
     begin
       db.alter_table(:htid) do
         drop_index :htid
@@ -120,14 +119,15 @@ class HathifilesDB
       db.alter_table(:htid) do
         add_index :htid, unique: true
       end
-    rescue =>  e # Index already existed
+    rescue => e # Index already existed
     end
 
   end
 
   def should_drop_indexes?
-    update_files.full? or update_files.large?
+    update_files.full? # or update_files.large?
   end
+
 
   def drop_indexes_if_necessary
     if should_drop_indexes?
@@ -145,37 +145,45 @@ class HathifilesDB
 
 
   def update_full
-    truncate_tables
+    schema.drop_indexes
     drop_even_main_index_for_full
-    LOG.info "Pulling down full file, dumping to file, and loading with raw import"
+    LOG.info "Pulling down full file, dumping to file, and loading with bulk import"
     HathifilesDB::FullFileImport.new.transform_and_import(update_files.full_file)
-    LOG.info "Done with full file dump/import"
+    LOG.info "Done with full file dump and bulk import"
     add_back_main_index
   end
 
   # Figure out what to update, and update it.
   def update
     if update_files.empty?
+      LOG.info "Nothing to do. No update files."
       return
     end
-
-    drop_indexes_if_necessary
+    LOG.info "#{update_files.count} files to load"
 
 
     if update_files.full?
-      update_full
+      LOG.info "Doing a full index"
+      unless ENV['DEBUG']
+        truncate_tables
+        update_full
+      end
+    else
+      drop_indexes_if_necessary
     end
+
 
     update_files.each_incremental_update_file do |file|
       added = update_from_file_obj(file)
       LOG.info "Indexed #{added} lines"
-      add_back_main_index # will only do anything after the first (full) file
     end
 
     add_indexes_if_necessary
 
     bookkeeping.last_update = update_files.most_recent_date
+    LOG.info "Last update date set to #{update_files.most_recent_date}"
   end
 
 
 end
+

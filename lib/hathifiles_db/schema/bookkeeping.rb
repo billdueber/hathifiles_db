@@ -22,7 +22,7 @@ class HathifilesDB
       end
 
       def last_update=(dt)
-        table.replace({key: 'last_updated', value: dt.to_i})
+        table.where(key: 'last_updated').update(value: dt.to_i)
       end
 
     end

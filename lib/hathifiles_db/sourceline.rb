@@ -24,7 +24,7 @@ class HathifilesDB
 
     def initialize(line)
       sl             = SOURCELINE.new(*(line.chomp.split(/\t/)))
-      allow          = sl.access == 'deny' ? false : true
+      allow          = sl.access == 'deny' ? 0 : 1
       sl.source_code = sl.source_code.downcase
 
       sl.last_update = DateTime.parse(sl.last_update)
@@ -39,6 +39,7 @@ class HathifilesDB
       @stdid     = [].concat(@isbn).concat(@issn).concat(@lccn).concat(@oclc)
 
       @main_hash = sl.to_h
+      @main_hash[:allow] = allow
       # We don't insert the things we split out
       [:access, :isbn_list, :issn_list, :lccn_list, :oclc_list].each do |key|
         @main_hash.delete key

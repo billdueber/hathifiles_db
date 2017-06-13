@@ -33,7 +33,17 @@ class HathifilesDB
       def drop_indexes
         db.alter_table(:htid) do
           HTID_INDEXES.each do |i|
-            drop_index i
+            LOG.info "Dropping index #{i}"
+            begin
+              drop_index i
+            rescue Sequel::DatabaseError => e
+              if e.message =~ /no such index/
+                LOG.info "Index #{i} didn't exist, but we don't care. Moving on."
+              else
+                LOG.error "Error in drop_indexes: #{e}"
+                raise e
+              end
+            end
           end
         end
       end
@@ -45,7 +55,6 @@ class HathifilesDB
           end
         end
       end
-
 
 
     end
