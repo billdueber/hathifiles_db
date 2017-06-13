@@ -88,7 +88,7 @@ class HathifilesDB
 
       stdid.delete_for_ids(htids)
       stdid.add(identifiers)
-      LOG.info "#{total} so far in this file" if (total > 0) and (total % 5_000 == 0)
+      LOG.info "  #{total} so far in this file" if (total > 0) and (total % 5_000 == 0)
     end
     total
   end
