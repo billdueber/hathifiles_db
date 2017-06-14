@@ -42,29 +42,19 @@ class HathifilesDB
 
 
   # Try to submit a batch of main table (:htid) data
-  # If it succeeds, it means they were all new.
-  # If it fails, try the next smaller batch size.
-  # Finally, we'll get down to a batch that we'll just
-  # re-send in upsert mode.
-  def send_in_batches_of(sizes, mains)
+  def send_in_batches_of(size, mains)
     db.transaction do
-      if sizes.empty?
-        htid.replace(mains)
-      else
-        mains.each_slice(sizes[0]) do |m|
-          begin
-            htid.add(m)
-          rescue Sequel::UniqueConstraintViolation => e # try the next size down
-            send_in_batches_of(sizes[1..-1], m)
-          end
-        end
+      mains.each_slice(size) do |m|
+        htid.replace(m)
       end
     end
   end
 
 
   # What size batches are we going to try to send to the database?
-  SLICE_SIZES   = [100]
+  SLICE_SIZE    = 500
+
+  # How many lines to read from the file at a time
   LINES_TO_READ = 1000
 
   # Cycle through the downloaded file and submit batches of
@@ -84,7 +74,7 @@ class HathifilesDB
         acc
       end
 
-      send_in_batches_of(SLICE_SIZES, mains)
+      send_in_batches_of(SLICE_SIZE, mains)
 
       stdid.delete_for_ids(htids)
       stdid.add(identifiers)
