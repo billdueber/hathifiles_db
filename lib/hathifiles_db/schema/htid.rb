@@ -6,9 +6,11 @@ class HathifilesDB
     class HTID
       include Inject["db"]
 
-      HTID_INDEXES = [:allow, :rights_code, :record_id, :source_code,
-                      :source_record_number, :reason_code, :last_update,
-                      :govdoc, :pub_year]
+      # All the indexes that we might want to drop (everything except
+      # the :htid main id)
+      HTID_INDEXES_TO_DROP_AND_ADD = [:allow, :rights_code, :record_id, :source_code,
+                                      :source_record_number, :reason_code, :last_update,
+                                      :govdoc, :pub_year]
 
       def table
         @table ||= db[:htid]
@@ -32,7 +34,7 @@ class HathifilesDB
       # Basically, drop everything but :htid in the htid table
       def drop_indexes
         db.alter_table(:htid) do
-          HTID_INDEXES.each do |i|
+          HTID_INDEXES_TO_DROP_AND_ADD.each do |i|
             LOG.info "Dropping index #{i}"
             begin
               drop_index i
@@ -50,7 +52,7 @@ class HathifilesDB
 
       def add_indexes
         db.alter_table(:htid) do
-          HTID_INDEXES.each do |i|
+          HTID_INDEXES_TO_DROP_AND_ADD.each do |i|
             add_index i
           end
         end

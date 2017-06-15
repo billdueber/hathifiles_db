@@ -7,7 +7,7 @@ class HathifilesDB
       include Inject["db"]
 
 
-      STDID_INDEXES = [:htid, :type, :value]
+      STDID_INDEXES_TO_DROP_AND_ADD = [:htid, :type, :value]
 
       def table
         @table ||= db[:stdid]
@@ -28,7 +28,7 @@ class HathifilesDB
 
       def drop_indexes
         db.alter_table(:stdid) do
-          STDID_INDEXES.each do |i|
+          STDID_INDEXES_TO_DROP_AND_ADD.each do |i|
             drop_index i
           end
         end
@@ -36,7 +36,7 @@ class HathifilesDB
 
       def add_indexes
         db.alter_table(:stdid) do
-          STDID_INDEXES.each do |i|
+          STDID_INDEXES_TO_DROP_AND_ADD.each do |i|
             add_index i
           end
         end
