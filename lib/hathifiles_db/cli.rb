@@ -127,6 +127,17 @@ class HathifilesDB
       error_out(:update, e)
     end
 
+    desc :console, "Start a pry console"
+    option :db, banner: "connection_string",
+           desc:        "The connection string (e.g., 'sqlite://mydir/myfile.db') if not in ENV"
+    def console
+      cs = (options[:db] or ENV['HATHIFILES_CONNECTION_STRING'])
+
+      hf = self.class.get_hf_from_connection_string(cs)
+      require 'pry'
+      binding.pry
+    end
+
 
   end
 end
