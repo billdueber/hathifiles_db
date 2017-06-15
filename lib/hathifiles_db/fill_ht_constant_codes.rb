@@ -13,6 +13,7 @@ class HathifilesDB
       fill_source_codes
       fill_rights_codes
       fill_reason_codes
+      fill_bookkeeping
     end
 
 
@@ -39,6 +40,10 @@ class HathifilesDB
       codes.each_pair do |code, desc|
         db[:reason_codes].replace(code: code, description: desc)
       end
+    end
+
+    def fill_bookkeeping
+      db[:bookkeeping].insert(key: 'last_updated', value: 0)
     end
 
 

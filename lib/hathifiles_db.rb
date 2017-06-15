@@ -169,8 +169,9 @@ class HathifilesDB
 
     add_indexes_if_necessary
 
-    bookkeeping.last_update = update_files.most_recent_date
-    LOG.info "Last update date set to #{update_files.most_recent_date}"
+    mrd = update_files.most_recent_date
+    bookkeeping.last_update = mrd
+    LOG.info "Last update date set to #{mrd}"
   end
 
 
