@@ -151,8 +151,11 @@ class HathifilesDB
       LOG.info "Nothing to do. No update files."
       return
     end
-    LOG.info "#{update_files.count} files to load"
 
+    LOG.info "#{update_files.count} files to load"
+    update_files.each_incremental_update_file do |u|
+      LOG.info "  #{u.name}"
+    end
 
     if update_files.full?
       LOG.info "Doing a full index"
@@ -165,10 +168,9 @@ class HathifilesDB
     end
 
 
-    update_files.each_incremental_update_file do |file|
-      added = update_from_file_obj(file)
-      LOG.info "Indexed #{added} lines"
-    end
+    update_files.each_incremental_update_file do |file| 
+      added = update_from_file_obj(file) 
+      LOG.info "Indexed #{added} lines" end
 
     add_indexes_if_necessary
 
