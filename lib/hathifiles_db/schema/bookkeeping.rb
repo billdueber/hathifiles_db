@@ -25,6 +25,14 @@ class HathifilesDB
         table.where(key: 'last_updated').update(value: dt.to_i)
       end
 
+      def last_full_file_date
+        @last_full_update = table.select(:value).where(key: 'last_full_file_date').single_value.to_i
+      end
+
+      def last_full_file_date=(dt)
+        table.where(key: 'last_full_file_date').update(value: dt.to_i)
+      end
+
     end
 
 

@@ -94,6 +94,10 @@ class HathifilesDB
           String :pub_place
           String :language_code
           String :bib_format_code
+          String :collection_code, index: true
+          String :content_provider_code, index: true
+          String :responsible_entity, index: true
+          String :digitization_agent, index: true
           #    foreign_key :language_code, :language_codes, key: :code, index: true
           #    foreign_key :bib_format_code, :bib_format_codes, key: :code, index: true
         end

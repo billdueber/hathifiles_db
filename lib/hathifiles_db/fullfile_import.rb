@@ -9,6 +9,7 @@ require 'sequel'
 require 'tempfile'
 require_relative 'sourceline'
 require 'csv'
+require_relative "schema/bookkeeping"
 
 class HathifilesDB
   class FullFileImport
@@ -31,11 +32,35 @@ class HathifilesDB
 
     end
 
+
+    # Download the full file
+    HTID_CSV_NAME   = "/tmp/htidfile.csv"
+    HTID_STDID_NAME = "/tmp/stdidfile.csv"
+
+    def create_csvs(fh)
+      return if File.exist?(HTID_CSV_NAME)
+      inputfile.each_with_index do |line, i|
+        sl = SourceLine.new(line)
+        begin
+          sl.main_hash[:last_update] = sl.main_hash[:last_update].to_s[0..18] if is_mysql?
+        rescue NoMethodError => e
+          LOG.error "NoMethodError for attempt to update `last_update` for #{sl.id} / #{sl.main_hash['title']} "
+        end
+
+
+      end
+    end
+
+    def fix_mysql_date(dt)
+      sl.main_hash[:last_update].to_s[0..18]
+    end
+
     # We need to get the filehandle for the full hathifile
     # and create two temp files: one for the htid table,
     # and one for the stdid table
-    def transform_and_import (filehandle, tmpdir = ENV['HATHIFILE_TEMPDIR'] || Dir.tmpdir)
+    def transform_and_import (filehandle, file_date, tmpdir = ENV['HATHIFILE_TEMPDIR'] || Dir.tmpdir)
       @inputfile           = filehandle
+      @file_date = file_date
 
       # @htidfile  = Tempfile.new('htid', tmpdir, encoding: 'utf-8')
       # @stdidfile = Tempfile.new('htid', tmpdir, encoding: 'utf-8')
@@ -44,27 +69,19 @@ class HathifilesDB
       @stdid_table_columns = [:htid, :type, :value]
 
       LOG.info "Transform/normalize fullfile to local .csv file in prep for bulk import"
-      if File.exist?('/tmp/htidfile.csv')
-        @htid_path  = '/tmp/htidfile.csv'
-        @stdid_path = '/tmp/stdidfile.csv'
-        LOG.warn "Using existing file at /tmp/htidfile.csv"
-      else
-        htid_tmp   = Tempfile.new('htid', tmpdir, encoding: 'utf-8')
-        @htidfile  = CSV.open(htid_tmp, 'w:utf-8')
-        @htid_path = htid_tmp.path
 
-        stdid_tmp   = Tempfile.new('stdid', tmpdir, encoding: 'utf-8')
-        @stdidfile  = CSV.open(stdid_tmp, 'w:utf-8')
-        @stdid_path = stdid_tmp.path
+      @htid_path  = "/tmp/htidfile_#{@file_date}.csv"
+      @stdid_path = "/tmp/stdidfile_#{@file_date}.csv"
+
+      if File.exist?(@htid_path)
+        LOG.warn "Using existing file at #{@htid_path}"
+      else
+        @htidfile  = CSV.open(@htid_path, 'w:utf-8')
+        @stdidfile = CSV.open(@stdid_path, 'w:utf-8')
 
         inputfile.each_with_index do |line, i|
-          sl = SourceLine.new(line)
-          begin
-            sl.main_hash[:last_update] = sl.main_hash[:last_update].to_s[0..18] if is_mysql?
-          rescue NoMethodError => e
-            LOG.error "NoMethodError for attempt to update `last_update` for #{sl.id} / #{sl.main_hash['title']} "
-          end
-
+          sl                         = SourceLine.new(line)
+          sl.main_hash[:last_update] = fix_mysql_date(sl.main_hash[:last_update]) if is_mysql?
           dump_to_htid(sl.main_hash)
           dump_to_stdid(sl.stdid)
           LOG.info "...#{i / 1_000_000}M items" if i > 0 and i % 1_000_000 == 0
@@ -94,6 +111,8 @@ class HathifilesDB
       else
         raise "Don't know how to bulk-load into db type #{db.database_type}"
       end
+      HathifilesDB::Schema::Bookkeeping.new.last_full_file_date = @file_date
+
     end
 
 

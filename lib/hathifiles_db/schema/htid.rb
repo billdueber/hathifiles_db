@@ -10,7 +10,8 @@ class HathifilesDB
       # the :htid main id)
       HTID_INDEXES_TO_DROP_AND_ADD = [:allow, :rights_code, :record_id, :source_code,
                                       :source_record_number, :reason_code, :last_update,
-                                      :govdoc, :pub_year]
+                                      :govdoc, :pub_year, :collection_code,
+                                      :content_provider_code, :responsible_entity, :digitization_agent]
 
       def table
         @table ||= db[:htid]

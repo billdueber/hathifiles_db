@@ -141,7 +141,7 @@ class HathifilesDB
     schema.drop_indexes
     drop_even_main_index_for_full
     LOG.info "Pulling down full file, dumping to file, and loading with bulk import"
-    HathifilesDB::FullFileImport.new.transform_and_import(update_files.full_file)
+    HathifilesDB::FullFileImport.new.transform_and_import(update_files.full_file, update_files.most_recent_full_link.datestamp)
     LOG.info "Done with full file dump and bulk import"
     LOG.info "Adding back main index"
     add_back_main_index
@@ -159,7 +159,7 @@ class HathifilesDB
     end
 
     LOG.info "#{update_files.count} files to load"
-    update_files.each_incremental_update_file do |u|
+    update_files.update_links.each do |u|
       LOG.info "  #{u.name}"
     end
 

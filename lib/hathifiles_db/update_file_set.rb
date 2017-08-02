@@ -56,11 +56,11 @@ class HathifilesDB
 
     def full?
       bk = HathifilesDB::Schema::Bookkeeping.new
-      last_update_date = bk.last_update
-      full = update_links.find {|x| x.name =~ /full/}
-      full and full.datestamp > last_update_date and LOG.info "Comparing #{last_update_date} to full date #{full.datestamp}"
-
+      last_full_file_date = bk.last_full_file_date
+      LOG.info "Comparing #{last_full_file_date} to full date #{most_recent_full_link.datestamp}"
+      most_recent_full_link.datestamp > last_full_file_date
     end
+
 
     def large?
       update_links.count > 7

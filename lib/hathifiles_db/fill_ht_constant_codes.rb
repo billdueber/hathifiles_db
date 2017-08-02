@@ -44,6 +44,7 @@ class HathifilesDB
 
     def fill_bookkeeping
       db[:bookkeeping].insert(key: 'last_updated', value: 0)
+      db[:bookkeeping].insert(key: 'last_full_file_date', value: 0)
     end
 
 

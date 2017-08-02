@@ -9,8 +9,8 @@ class HathifilesDB
                 oclc_list isbn_list issn_list lccn_list
                 title imprint reason_code last_update
                 govdoc pub_year pub_place language_code bib_format_code
-                ).map(&:to_sym)
-
+                collection_code content_provider_code responsible_entity
+                digitization_agent).map(&:to_sym)
 
     SOURCELINE        = Struct.new(*SOURCELINE_FIELDS)
     LINEDATA          = Struct.new(:htid, :main, :isbn, :issn, :lccn, :oclc, :stdid)

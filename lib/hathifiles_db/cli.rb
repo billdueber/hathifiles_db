@@ -124,6 +124,7 @@ class HathifilesDB
       end
       hf.update
     rescue => e
+      raise e
       error_out(:update, e)
     end
 
