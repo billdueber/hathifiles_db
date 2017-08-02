@@ -4,7 +4,5 @@ $:.unshift File.join(File.dirname(__FILE__), '..', 'lib')
 
 require 'hathifiles_db/cli'
 
-# HathifilesDB::CLI.setup(connection_string)
-
 HathifilesDB::CLI.start(ARGV)
 
