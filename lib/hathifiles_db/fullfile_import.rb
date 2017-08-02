@@ -52,7 +52,7 @@ class HathifilesDB
     end
 
     def fix_mysql_date(dt)
-      sl.main_hash[:last_update].to_s[0..18]
+      dt.to_s[0..18]
     end
 
     # We need to get the filehandle for the full hathifile
