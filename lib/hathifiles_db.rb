@@ -59,7 +59,10 @@ class HathifilesDB
 
   # Cycle through the downloaded file and submit batches of
   # data.
+
+
   def update_from_file_obj(file_obj)
+    
     total = 0
     file_obj.each_slice(LINES_TO_READ) do |lines|
       total       += lines.size
@@ -143,6 +146,9 @@ class HathifilesDB
     LOG.info "Adding back main index"
     add_back_main_index
     LOG.info "Finished adding back main index"
+    LOG.info "Adding back other indexes"
+    schema.add_indexes
+    LOG.info "Finished adding back other indexes"
   end
 
   # Figure out what to update, and update it.
@@ -160,8 +166,6 @@ class HathifilesDB
         truncate_tables
         update_full
       end
-    else
-      drop_indexes_if_necessary
     end
 
 
@@ -169,8 +173,6 @@ class HathifilesDB
       added = update_from_file_obj(file)
       LOG.info "Indexed #{added} lines"
     end
-
-    add_indexes_if_necessary
 
     mrd = update_files.most_recent_date
     bookkeeping.last_update = mrd

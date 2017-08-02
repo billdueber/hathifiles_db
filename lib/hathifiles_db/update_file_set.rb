@@ -55,7 +55,11 @@ class HathifilesDB
     end
 
     def full?
-      update_links.map(&:name).any? {|x| x =~ /full/}
+      bk = HathifilesDB::Schema::Bookkeeping.new
+      last_update_date = bk.last_update
+      full = update_links.find {|x| x.name =~ /full/}
+      full and full.datestamp > last_update_date and LOG.info "Comparing #{last_update_date} to full date #{full.datestamp}"
+
     end
 
     def large?

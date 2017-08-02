@@ -43,18 +43,18 @@ class HathifilesDB
       @htid_table_columns  = db[:htid].columns
       @stdid_table_columns = [:htid, :type, :value]
 
-      LOG.info "Dumping fullfile to local .csv file in prep for bulk import"
+      LOG.info "Transform/normalize fullfile to local .csv file in prep for bulk import"
       if File.exist?('/tmp/htidfile.csv')
-        @htid_path = '/tmp/htidfile.csv'
+        @htid_path  = '/tmp/htidfile.csv'
         @stdid_path = '/tmp/stdidfile.csv'
         LOG.warn "Using existing file at /tmp/htidfile.csv"
       else
-        htid_tmp = Tempfile.new('htid',  tmpdir, encoding: 'utf-8')
-        @htidfile            = CSV.open(htid_tmp, 'w:utf-8')
+        htid_tmp   = Tempfile.new('htid', tmpdir, encoding: 'utf-8')
+        @htidfile  = CSV.open(htid_tmp, 'w:utf-8')
         @htid_path = htid_tmp.path
 
-        stdid_tmp = Tempfile.new('stdid', tmpdir, encoding: 'utf-8')
-        @stdidfile           = CSV.open(stdid_tmp, 'w:utf-8')
+        stdid_tmp   = Tempfile.new('stdid', tmpdir, encoding: 'utf-8')
+        @stdidfile  = CSV.open(stdid_tmp, 'w:utf-8')
         @stdid_path = stdid_tmp.path
 
         inputfile.each_with_index do |line, i|
@@ -81,8 +81,8 @@ class HathifilesDB
     end
 
     def dump_to_stdid(arr)
-      arr.each do |stdid_hash|
-        @stdidfile << stdid_hash.values_at(*@stdid_table_columns)
+      arr.each do |triple|
+        @stdidfile << triple
       end
     end
 

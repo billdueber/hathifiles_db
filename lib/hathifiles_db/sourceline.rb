@@ -10,6 +10,8 @@ class HathifilesDB
                 title imprint reason_code last_update
                 govdoc pub_year pub_place language_code bib_format_code
                 ).map(&:to_sym)
+
+
     SOURCELINE        = Struct.new(*SOURCELINE_FIELDS)
     LINEDATA          = Struct.new(:htid, :main, :isbn, :issn, :lccn, :oclc, :stdid)
 
@@ -32,23 +34,32 @@ class HathifilesDB
 
       sl.htid.freeze
       @id        = sl.htid
-      @isbn      = isbn_lines(sl.isbn_list.split(SPLIT_ON_COMMA))
-      @lccn      = sl.lccn_list.split(SPLIT_ON_COMMA).map {|i| {htid: id, type: LCCN_STR, value: StdNum::LCCN.normalize(i)}}
-      @issn      = sl.issn_list.split(SPLIT_ON_COMMA).map {|i| {htid: id, type: ISSN_STR, value: StdNum::ISSN.normalize(i)}}
-      @oclc      = sl.oclc_list.split(SPLIT_ON_COMMA).map {|i| {htid: id, type: OCLC_STR, value: normalize_oclc(i)}}
+      # @isbn      = isbn_lines(sl.isbn_list.split(SPLIT_ON_COMMA))
+      # @lccn      = sl.lccn_list.split(SPLIT_ON_COMMA).map {|i| {htid: id, type: LCCN_STR, value: StdNum::LCCN.normalize(i)}}
+      # @issn      = sl.issn_list.split(SPLIT_ON_COMMA).map {|i| {htid: id, type: ISSN_STR, value: StdNum::ISSN.normalize(i)}}
+      # @oclc      = sl.oclc_list.split(SPLIT_ON_COMMA).map {|i| {htid: id, type: OCLC_STR, value: normalize_oclc(i)}}
+
+      @isbn =      isbn_lines(sl.isbn_list.split(SPLIT_ON_COMMA))
+      @lccn      = sl.lccn_list.split(SPLIT_ON_COMMA).map {|i| [id, LCCN_STR, StdNum::LCCN.normalize(i)]}
+      @issn      = sl.issn_list.split(SPLIT_ON_COMMA).map {|i| [id, ISSN_STR, StdNum::ISSN.normalize(i)]}
+      @oclc      = sl.oclc_list.split(SPLIT_ON_COMMA).map {|i| [id, OCLC_STR, normalize_oclc(i)]}
+
       @stdid     = [].concat(@isbn).concat(@issn).concat(@lccn).concat(@oclc)
 
       @main_hash = sl.to_h
       @main_hash[:allow] = allow
-      # We don't insert the things we split out
+
+      # Remove the raw ID fields
       [:access, :isbn_list, :issn_list, :lccn_list, :oclc_list].each do |key|
         @main_hash.delete key
       end
 
     end
 
+
+
     def isbn_lines(isbnlist)
-      isbnlist.map{|i| StdNum::ISBN.allNormalizedValues(i)}.flatten.compact.map{|i| {htid: id, type: ISBN_STR, value: i}}.uniq
+      isbnlist.map{|i| StdNum::ISBN.allNormalizedValues(i)}.flatten.compact.map{|i| [id, ISBN_STR, i]}
     end
 
     def normalize_oclc(o)

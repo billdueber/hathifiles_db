@@ -22,8 +22,8 @@ class HathifilesDB
         table.where(htid: ids).delete
       end
 
-      def add(hashes)
-        table.multi_insert(hashes)
+      def add(triples)
+        table.import([:htid, :type, :value], triples)
       end
 
       def drop_indexes
