@@ -140,12 +140,12 @@ class HathifilesDB
   def update_full
     schema.drop_indexes
     drop_even_main_index_for_full
-    LOG.info "Pulling down full file, dumping to file, and loading with bulk import"
+    LOG.info "Preparing to bulk-load full file"
     HathifilesDB::FullFileImport.new.transform_and_import(update_files.full_file, update_files.most_recent_full_link.datestamp)
     LOG.info "Done with full file dump and bulk import"
     LOG.info "Adding back main index"
     add_back_main_index
-    LOG.info "Finished adding back main index"
+    LOG.info "Finished adding back main (htid) index"
     LOG.info "Adding back other indexes"
     schema.add_indexes
     LOG.info "Finished adding back other indexes"
@@ -164,7 +164,7 @@ class HathifilesDB
     end
 
     if update_files.full?
-      LOG.info "Doing a full index"
+      LOG.info "Importing a full-dump hahtifile (#{update_files.most_recent_full_link.name})"
       unless ENV['DEBUG']
         truncate_tables
         update_full

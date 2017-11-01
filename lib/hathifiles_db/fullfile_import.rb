@@ -68,14 +68,15 @@ class HathifilesDB
       @htid_table_columns  = db[:htid].columns
       @stdid_table_columns = [:htid, :type, :value]
 
-      LOG.info "Transform/normalize fullfile to local .csv file in prep for bulk import"
+      LOG.info "Transform/normalize full-file to local .csv files (in #{tmpdir}) in prep for bulk import"
 
-      @htid_path  = "/tmp/htidfile_#{@file_date}.csv"
-      @stdid_path = "/tmp/stdidfile_#{@file_date}.csv"
+      @htid_path  = File.join(tmpdir, "htidfile_#{@file_date}.csv")
+      @stdid_path = File.join(tmpdir, "stdidfile_#{@file_date}.csv")
 
       if File.exist?(@htid_path)
-        LOG.warn "Using existing file at #{@htid_path}"
+        LOG.warn "Full-file import using existing CSV files at #{@htid_path} and #{@stdid_path}"
       else
+        LOG.info "Beginning transformation. This is slow"
         @htidfile  = CSV.open(@htid_path, 'w:utf-8')
         @stdidfile = CSV.open(@stdid_path, 'w:utf-8')
 
@@ -89,7 +90,7 @@ class HathifilesDB
         @htidfile.close
         @stdidfile.close
       end
-      LOG.info "Done. Bulk importing into database"
+      LOG.info "Done. Beginning bulk-import into database"
       push_into_db
     end
 
@@ -129,9 +130,9 @@ class HathifilesDB
     end
 
     def push_into_mysql
-      db.run %Q{LOAD DATA INFILE '#{@htid_path}' into table htid
+      db.run %Q{LOAD DATA LOCAL INFILE '#{@htid_path}' into table htid
         COLUMNS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' ESCAPED BY '"' LINES TERMINATED BY '\n'}
-      db.run %Q{LOAD DATA INFILE '#{@stdid_path}' into table stdid
+      db.run %Q{LOAD DATA LOCAL INFILE '#{@stdid_path}' into table stdid
         COLUMNS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' ESCAPED BY '"' LINES TERMINATED BY '\n'}
     end
   end
