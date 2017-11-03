@@ -1,8 +1,9 @@
 require 'hathifiles_db/hathifile'
 
+old_verbose, $VERBOSE = $VERBOSE, nil
 require 'oga'
 require 'rest-client'
-require 'hathifiles_db/schema/bookkeeping'
+$VERBOSE = old_verbose
 
 module HathifilesDB
 
@@ -31,7 +32,7 @@ module HathifilesDB
       if need_to_start_from_scratch?(last_load_YYYYMMDD)
         start_from_scratch_files
       else
-        unloaded_files = all.find_all{|x| x.update? and x.datestamp > last_load_YYYYMMDD}
+        all.find_all{|x| x.update? and x.datestamp > last_load_YYYYMMDD}
       end
     end
 

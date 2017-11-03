@@ -41,8 +41,5 @@ Gem::Specification.new do |spec|
 
 
 
-  spec.add_development_dependency "minitest", "~> 5.0"
-  spec.add_development_dependency "minitest-reporters"
-
-
+  spec.add_development_dependency "rspec"
 end
