@@ -6,7 +6,7 @@ module HathifilesDB
   class Hathifile
     extend Dry::Initializer
 
-    def self.from(url:, name:, datestamp:, type: )
+    def self.from(url:, name:, datestamp:, type:)
       case type
       when 'upd'
         UpdateHathifile.new(url: url, name: name, datestamp: datestamp)
@@ -25,29 +25,38 @@ module HathifilesDB
     option :name
     option :datestamp
 
+    # Is this a full file (not an incremental update file)?
     def full?
       !update?
     end
 
+    # Is this an incremental update file (not a full file)?
     def update?
       self.class == UpdateHathifile
     end
 
-    def io(url = self.url)
-      return @io if defined? @io
-      resp =         RestClient::Request.execute(
-        method:       :get,
-        url:          url,
-        raw_response: true)
-      @io = Zlib::GzipReader.new(File.open(resp.file.path, 'rb'), encoding: 'utf-8')
+    # Get an IO object for this file from its URL.
+    # Can override the url to fech from from or
+    # simply give it a file path on disk in `localfile`
+    def io(url = self.url, localfile: nil)
+      file_path = if localfile.nil?
+                    RestClient::Request.execute(
+                      method:       :get,
+                      url:          url,
+                      raw_response: true).file.path
+                  else
+                    localfile
+                  end
+      Zlib::GzipReader.new(File.open(file_path, 'rb'), encoding: 'utf-8')
     end
+
 
   end
 
   class FullHathifile < UpdateHathifile
 
 
-
   end
 
 end
+

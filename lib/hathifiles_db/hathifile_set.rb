@@ -2,6 +2,7 @@ require 'hathifiles_db/hathifile'
 
 require 'oga'
 require 'rest-client'
+require 'hathifiles_db/schema/bookkeeping'
 
 module HathifilesDB
 
@@ -18,11 +19,31 @@ module HathifilesDB
       RestClient.get(url).body
     end
 
-    attr_reader :all_links
+    attr_reader :all
     def initialize(html_string)
       doc = Oga::parse_html(html_string)
-      @all_links = links_from_oga_doc(doc)
+      @all = links_from_oga_doc(doc)
                      .sort {|x, y| x.datestamp <=> y.datestamp}
+    end
+
+    # Which files need to be loaded to catch up?
+    def catchup_files(last_load_YYYYMMDD)
+      if need_to_start_from_scratch?(last_load_YYYYMMDD)
+        start_from_scratch_files
+      else
+        unloaded_files = all.find_all{|x| x.update? and x.datestamp > last_load_YYYYMMDD}
+      end
+    end
+
+    # Do we need to start from scratch?
+    def need_to_start_from_scratch?(last_load_YYYYMMDD)
+      last_load_YYYYMMDD < all.first.datestamp
+    end
+
+    # The files we need if we're going to just wipe it all out and
+    # start over with the most recent full file?
+    def start_from_scratch_files
+      all.reverse.slice_after{|x| x.full?}.first.reverse
     end
 
 
