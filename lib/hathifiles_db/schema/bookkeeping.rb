@@ -4,11 +4,11 @@ module HathifilesDB
   module Schema
     class Bookkeeping < Base
 
-      def self.table_name
+      def table_name
         :bookkeeping
       end
 
-      def self.create
+      def create
         create_table do
           Number :last_update_YYYYMMDD
         end

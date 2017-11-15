@@ -16,6 +16,29 @@ module HathifilesDB
         raise "Unknown hathifile type: #{type}"
       end
     end
+
+    # Get an IO object for this file from its URL.
+    # Can override the url to fech from from or
+    # simply give it a file path on disk in `localfile`
+    def io(url = self.url, localfile: nil)
+      file_path = if localfile.nil?
+                    RestClient::Request.execute(
+                      method:       :get,
+                      url:          url,
+                      raw_response: true).file.path
+                  else
+                    localfile
+                  end
+      Zlib::GzipReader.new(File.open(file_path, 'rb'), encoding: 'utf-8')
+    end
+
+    def dump_to_tsvs(id_tsv, stdid_tsv)
+      io.each do |line|
+        line.chomp!
+        values = line.split("\t")
+
+      end
+    end
   end
 
   class UpdateHathifile
@@ -33,21 +56,6 @@ module HathifilesDB
     # Is this an incremental update file (not a full file)?
     def update?
       self.class == UpdateHathifile
-    end
-
-    # Get an IO object for this file from its URL.
-    # Can override the url to fech from from or
-    # simply give it a file path on disk in `localfile`
-    def io(url = self.url, localfile: nil)
-      file_path = if localfile.nil?
-                    RestClient::Request.execute(
-                      method:       :get,
-                      url:          url,
-                      raw_response: true).file.path
-                  else
-                    localfile
-                  end
-      Zlib::GzipReader.new(File.open(file_path, 'rb'), encoding: 'utf-8')
     end
 
 

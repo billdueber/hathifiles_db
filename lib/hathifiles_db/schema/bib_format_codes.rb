@@ -17,8 +17,8 @@ module HathifilesDB
       def create
         create_table do
           String :code, primary_key: true
-          String :bib_format        end
-        db[table_name].insert(last_update_YYYYMMDD: 0)
+          String :bib_format
+        end
       end
     end
   end
