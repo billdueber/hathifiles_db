@@ -1,11 +1,3 @@
-module HathifilesDB
-  module Schema
-    module InstanceMethods
-
-      def create_table(&blk)
-        db.create_table(table_name, &blk)
-      end
-    end
-  end
-end
-
+require 'hathifiles_db/schema/id'
+require 'hathifiles_db/schema/stdid'
+require 'hathifiles_db/schema/bib_format_codes'

@@ -1,25 +1,27 @@
-require 'hathifiles_db/schema'
+require 'hathifiles_db/schema/base'
 
 module HathifilesDB
   module Schema
-    class Bookkeeping
-      include HathifilesDB::Inject["db"]
-      include HathifilesDB::Schema::InstanceMethods
+    class Bookkeeping < Base
 
-      def table_name
+      def self.table_name
         :bookkeeping
       end
 
-      def create
+      def self.create
         create_table do
           Number :last_update_YYYYMMDD
         end
         db[table_name].insert(last_update_YYYYMMDD: 0)
       end
 
+      def last_updated
+        db[table_name].get(:last_update_YYYYMMDD)
+      end
 
-
-
+      def update(val)
+        db[table_name].update(last_update_YYYYMMDD: val)
+      end
 
 
     end
