@@ -6,6 +6,9 @@ module HathifilesDB
         def table_name
           :oclc
         end
+        def hathifile_tsv_columns
+          [:id, :oclc]
+        end
       end
     end
   end

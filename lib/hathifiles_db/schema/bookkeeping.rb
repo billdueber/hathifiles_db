@@ -8,6 +8,10 @@ module HathifilesDB
         :bookkeeping
       end
 
+      def index_columns
+        []
+      end
+
       def create
         create_table do
           Number :last_update_YYYYMMDD

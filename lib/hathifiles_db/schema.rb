@@ -21,8 +21,9 @@ module HathifilesDB
 
     def self.create_all
       subschema.each do |klass|
-        puts "Working on #{klass}"
-        klass.new.recreate
+        inst = klass.new
+        puts "(Re)creating table #{inst.table_name}"
+        inst.recreate
       end
     end
   end

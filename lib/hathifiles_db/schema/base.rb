@@ -16,6 +16,14 @@ module HathifilesDB
         raise "Need to set in subclass"
       end
 
+      def hathifile_tsv_column_indexes
+        @hf_column_indexes ||= hathifile_tsv_columns.map{|x| HathifilesDB::Hathifile::HF_COLUMN_INDEXES[x]}
+      end
+
+      def hf_line_data(hathifile_line_as_array)
+        hathifile_line_as_array.values_at(*(hathifile_tsv_column_indexes))
+      end
+
       def recreate
         drop_table
         create

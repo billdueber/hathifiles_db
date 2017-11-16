@@ -6,6 +6,10 @@ module HathifilesDB
         def table_name
           :lccn
         end
+
+        def hathifile_tsv_columns
+          [:id, :lccns]
+        end
       end
     end
   end

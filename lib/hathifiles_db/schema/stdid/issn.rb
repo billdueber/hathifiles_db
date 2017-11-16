@@ -7,6 +7,10 @@ module HathifilesDB
         def table_name
           :issn
         end
+
+        def hathifile_tsv_columns
+          [:id, :issns]
+        end
       end
     end
   end

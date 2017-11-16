@@ -30,6 +30,7 @@ module HathitrustDB
   end
 
   class IDTSV < TSV
+
     def initalize(*args, **kwargs)
       super
       @number_of_columns = HathifilesDB::Schema::ID.new.columns.size

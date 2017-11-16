@@ -11,6 +11,8 @@ module HathifilesDB
           ]
         end
 
+
+
         def create
           create_table do
             String :id

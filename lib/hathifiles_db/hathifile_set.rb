@@ -11,24 +11,25 @@ module HathifilesDB
   # A set of links as screen-scraped off the Hathifile download page
   class HathifileSet
 
-    def self.new_from_web(url = HATHFILES_LIST_URL)
+    def self.new_from_web(last_load_date:, url: HathifilesDB::HATHIFILES_LIST_URL)
       html = self.fetch_html(url)
-      self.new(html)
+      self.new(html, last_load_date: last_load_date)
     end
 
     def self.fetch_html(url)
       RestClient.get(url).body
     end
 
-    attr_reader :all
-    def initialize(html_string)
+    attr_reader :all, :last_load_date
+    def initialize(html_string, last_load_date: 0)
       doc = Oga::parse_html(html_string)
       @all = links_from_oga_doc(doc)
                      .sort {|x, y| x.datestamp <=> y.datestamp}
+      @last_load_date = last_load_date
     end
 
     # Which files need to be loaded to catch up?
-    def catchup_files(last_load_YYYYMMDD)
+    def catchup_files(last_load_YYYYMMDD = last_load_date)
       if need_to_start_from_scratch?(last_load_YYYYMMDD)
         start_from_scratch_files
       else
@@ -37,7 +38,7 @@ module HathifilesDB
     end
 
     # Do we need to start from scratch?
-    def need_to_start_from_scratch?(last_load_YYYYMMDD)
+    def need_to_start_from_scratch?(last_load_YYYYMMDD = last_load_date)
       last_load_YYYYMMDD < all.first.datestamp
     end
 

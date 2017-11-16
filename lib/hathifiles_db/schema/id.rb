@@ -1,4 +1,5 @@
 require 'hathifiles_db/schema/base'
+require 'hathifiles_db/hathifile'
 
 module HathifilesDB
   module Schema
@@ -25,9 +26,18 @@ module HathifilesDB
           :responsible_entity,
           :digitization_agent,
           :language_code,
-          :bib_format_code
+          :bib_format_code,
+          :collection_code,
+          :content_provider_code,
+          :responsible_entity_code,
+          :digitization_agent_code
         ]
       end
+
+      def hathifile_tsv_columns
+
+      end
+
 
       def create
         create_table do
@@ -54,18 +64,18 @@ module HathifilesDB
 
           DateTime :last_update, index: true
           TrueClass :govdoc, index: true
+
           Integer :pub_year, index: true
           String :pub_place
-          String :collection_code, index: true
-          String :content_provider_code, index: true
-          String :responsible_entity, index: true
-          String :digitization_agent, index: true
 
           String :language_code, index: true
-          # foreign_key :language_code, :language_codes, key: :code, index: true
 
           String :bib_format_code, index: true
-          # foreign_key :bib_format_code, :bib_format_codes, key: :code, index: true
+
+          String :collection_code, index: true
+          String :content_provider_code, index: true
+          String :responsible_entity_code, index: true
+          String :digitization_agent_code, index: true
         end
       end
     end
