@@ -10,10 +10,14 @@ end
 require 'hathifiles_db/hathifile_set'
 require 'hathifiles_db/schema'
 
-
+puts "Zero"
 HathifilesDB::Schema.create_all
+puts "one"
 bk = HathifilesDB::Schema::Bookkeeping.new
+puts "Two"
 set = HathifilesDB::HathifileSet.new_from_web(last_load_date: bk.last_updated)
+puts "Three"
 
+require 'pry'; binding.pry
 
-
+puts "Done"
