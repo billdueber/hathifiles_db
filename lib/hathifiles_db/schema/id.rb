@@ -31,7 +31,7 @@ module HathifilesDB
       end
 
       def hathifile_tsv_columns
-
+        columns
       end
 
 

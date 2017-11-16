@@ -7,7 +7,7 @@ module HathifilesDB
           :oclc
         end
         def hathifile_tsv_columns
-          [:id, :oclc]
+          [:id, :oclcs]
         end
       end
     end
