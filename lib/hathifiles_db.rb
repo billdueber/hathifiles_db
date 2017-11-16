@@ -15,6 +15,13 @@ HathifilesDB::Schema.create_all
 puts "one"
 bk = HathifilesDB::Schema::Bookkeeping.new
 puts "Two"
+
+
+#########
+     bk.update(20171114)
+#########
+
+
 set = HathifilesDB::HathifileSet.new_from_web(last_load_date: bk.last_updated)
 puts "Three"
 
