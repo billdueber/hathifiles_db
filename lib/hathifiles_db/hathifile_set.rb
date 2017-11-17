@@ -11,6 +11,20 @@ module HathifilesDB
   # A set of links as screen-scraped off the Hathifile download page
   class HathifileSet
 
+    include Enumerable
+    def each
+      return enum_for(:each) unless block_given?
+      catchup_files.each {|y| yield y}
+    end
+
+    def fullfile
+      self.find{|x| x.full?}
+    end
+
+    def update_files
+      self.find_all{|x| !x.full?}
+    end
+
     def self.new_from_web(last_load_date:, url: HathifilesDB::HATHIFILES_LIST_URL)
       html = self.fetch_html(url)
       self.new(html, last_load_date: last_load_date)

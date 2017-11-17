@@ -6,9 +6,21 @@ module HathifilesDB
       attr_reader :db
 
 
-
       def table_name
         raise "Need to set in subclass"
+      end
+
+      def table
+        db[table_name]
+      end
+
+      def <<(hline_as_array)
+        insertables = hf_line_data(hline_as_array)
+        return if insertables.empty?
+        insertables = [insertables] unless insertables.first.kind_of? Array
+        insertables.each do |hfl|
+          table.insert hfl
+        end
       end
 
 
@@ -17,11 +29,19 @@ module HathifilesDB
       end
 
       def hathifile_tsv_column_indexes
-        @hf_column_indexes ||= hathifile_tsv_columns.map{|x| HathifilesDB::Hathifile::HF_COLUMN_INDEXES[x]}
+        @hf_column_indexes ||= hathifile_tsv_columns.map {|x| HathifilesDB::Hathifile::HF_COLUMN_INDEXES[x]}
+      end
+
+      def raw_hf_line_data(hathifile_line_as_array)
+        d = hathifile_line_as_array.values_at(*(hathifile_tsv_column_indexes))
       end
 
       def hf_line_data(hathifile_line_as_array)
-        hathifile_line_as_array.values_at(*(hathifile_tsv_column_indexes))
+        process(raw_hf_line_data(hathifile_line_as_array))
+      end
+
+      def process(arr)
+        arr
       end
 
       def recreate
@@ -48,7 +68,7 @@ module HathifilesDB
 
 
       def create_indexes(columns = self.index_columns)
-        columns = columns.map{|x| Array(x)}
+        columns = columns.map {|x| Array(x)}
         columns = columns - current_indexes
         db.alter_table(table_name) do
           columns.each do |c|
@@ -66,22 +86,28 @@ module HathifilesDB
         end
       end
 
+      # A simple way to delete everything that has one of a set of IDs
+      def delete_by_id(ids)
+        ids = Array(ids)
+        db[table_name].where(id: ids).delete
+      end
+
       def import_tsv(import_path, table_name: self.table_name.to_s)
         if db.uri =~ /sqlite/
           import_csv_into_sqlite(import_path, table_name: table_name)
         end
       end
-
-
-      def import_csv_into_sqlite(import_path, table_name: self.table_name.to_s)
-        dbname = db.uri.gsub(/\A.*?sqlite3?:\/\//, '')
-        IO.popen(["sqlite3", dbname], 'w+:utf-8') do |sqlite_client|
-          sqlite_client.puts '.mode csv'
-          sqlite_client.puts ".import #{import_path}  #{table_name}"
-          sqlite_client.close_write
-        end
-      end
-
+      #
+      #
+      # def import_csv_into_sqlite(import_path, table_name: self.table_name.to_s)
+      #   dbname = db.uri.gsub(/\A.*?sqlite3?:\/\//, '')
+      #   IO.popen(["sqlite3", dbname], 'w+:utf-8') do |sqlite_client|
+      #     sqlite_client.puts '.mode csv'
+      #     sqlite_client.puts ".import #{import_path}  #{table_name}"
+      #     sqlite_client.close_write
+      #   end
+      # end
+      #
       def import_tsv_into_sqlite(import_path, table_name: self.table_name.to_s)
         dbname = db.uri.gsub(/\A.*?sqlite3?:\/\//, '')
         IO.popen(["sqlite3", dbname], 'w+:utf-8') do |sqlite_client|
@@ -94,5 +120,7 @@ module HathifilesDB
     end
   end
 end
+
+
 
 

@@ -1,5 +1,8 @@
 require 'dry-initializer'
 
+require 'hathifiles_db/schema/id'
+require 'hathifiles_db/schema/stdid'
+
 module HathifilesDB
 
   # An individual Hathifile, which can yield up parsed lines
@@ -69,6 +72,8 @@ module HathifilesDB
         yield l.chomp.split("\t")
       end
     end
+
+
   end
 
   class UpdateHathifile < Hathifile

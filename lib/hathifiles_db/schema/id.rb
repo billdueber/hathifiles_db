@@ -12,7 +12,7 @@ module HathifilesDB
       def index_columns
         [
           :id,
-          :allow,
+          :access,
           :rights_code,
           :record_id,
           :source_code,
@@ -40,7 +40,7 @@ module HathifilesDB
           String :id
           index :id, unique: true
 
-          TrueClass :allow, index: true
+          TrueClass :access, index: true
 
           # foreign_key :rights_code, :rights_codes, key: :code, type: String, index: true
           String :rights_code, index: true

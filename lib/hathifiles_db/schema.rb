@@ -18,6 +18,16 @@ module HathifilesDB
       ]
     end
 
+    def self.tsv_target_hash
+      {
+        id: ID.new,
+        oclc: STDID::OCLC.new,
+        isbn: STDID::ISBN.new,
+        issn: STDID::ISSN.new,
+        lccn: STDID::LCCN.new
+      }
+    end
+
 
     def self.create_all
       subschema.each do |klass|
@@ -26,5 +36,6 @@ module HathifilesDB
         inst.recreate
       end
     end
+
   end
 end
