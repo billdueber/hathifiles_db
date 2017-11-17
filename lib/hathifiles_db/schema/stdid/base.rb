@@ -28,7 +28,7 @@ module HathifilesDB
         def hf_line_data(hathifile_line_as_array)
           id, vals = *(raw_hf_line_data(hathifile_line_as_array))
           return [] unless vals =~ /[^\s"]/
-          multivals = vals.split(/\s*,\s*/).map{|x| process_val(x)}
+          multivals = vals.split(/\s*,\s*/).map{|x| process_val(x)}.flatten
 
           multivals.map{|v| [id, v]}
         end
