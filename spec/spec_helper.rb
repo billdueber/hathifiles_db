@@ -18,7 +18,15 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 end
 
+# Set up a db for testing
 
+require 'dry-auto_inject'
+require 'sequel'
+module HathifilesDB
+  Inject = Dry::AutoInject({'db' => Sequel.connect('sqlite:/') })
+end
+
+# Some helpers
 require 'pathname'
 DDIR = Pathname.new(__dir__) + 'data'
 

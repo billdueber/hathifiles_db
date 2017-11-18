@@ -1,3 +1,4 @@
+require 'hathifiles_db/constants'
 module HathifilesDB
   module Schema
     class Base
@@ -29,11 +30,11 @@ module HathifilesDB
       end
 
       def hathifile_tsv_column_indexes
-        @hf_column_indexes ||= hathifile_tsv_columns.map {|x| HathifilesDB::Hathifile::HF_COLUMN_INDEXES[x]}
+        @hf_column_indexes ||= hathifile_tsv_columns.map {|x| HathifilesDB::Constants::HF_COLUMN_INDEXES[x]}
       end
 
       def raw_hf_line_data(hathifile_line_as_array)
-        d = hathifile_line_as_array.values_at(*(hathifile_tsv_column_indexes))
+        hathifile_line_as_array.values_at(*(hathifile_tsv_column_indexes))
       end
 
       def hf_line_data(hathifile_line_as_array)

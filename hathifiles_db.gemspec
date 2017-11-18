@@ -25,10 +25,11 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.0"
 
   spec.add_dependency 'dry-auto_inject'
+  spec.add_dependency 'dry-initializer'
   spec.add_dependency 'rest-client'
   spec.add_dependency 'sequel'
   spec.add_dependency 'oga'
-  spec.add_dependency 'thor'
+  # spec.add_dependency 'thor'
   spec.add_dependency 'library_stdnums'
 
   if defined? JRUBY_VERSION
