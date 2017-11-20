@@ -31,10 +31,10 @@ RSpec.describe HathifilesDB::HathifileSet do
   end
 
   it "finds only update files if fullfile not needed" do
-    let(:hfs)  { hfs.truncate(20171005) }
-    let(:cf)   { hfs.catchup_files(20171003) }
-    expect(hfs.fullfile).to be_nil
-    expect(cf.map{|x| x.datestamp}).to eq([20171104, 20171105])
+    h = hfs.truncate(20171005)
+    cf = h.catchup_files(20171003)
+    expect(cf.find{|x| x.full?}).to be_nil
+    expect(cf.map{|x| x.datestamp}).to eq([20171004, 20171005])
   end
 
 end

@@ -1,3 +1,9 @@
+# Oga throws all sorts of warnings. Suppress
+
+old_verbose = $VERBOSE
+$VERBOSE = nil
+require 'oga'
+$VERBOSE = old_verbose
 require 'rspec'
 
 RSpec.configure do |config|
@@ -39,3 +45,5 @@ end
 def data_file_content(filename)
   File.read(data_file(filename))
 end
+
+

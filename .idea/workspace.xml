@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="62734995-4521-4e02-ba99-d2def35666fb" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/spec/hathitrust_db/hathifile_spec.rb" />
+      <change beforePath="$PROJECT_DIR$/.idea/hathifiles_db.iml" afterPath="$PROJECT_DIR$/.idea/hathifiles_db.iml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/lib/hathifiles_db/hathifile_set.rb" afterPath="$PROJECT_DIR$/lib/hathifiles_db/hathifile_set.rb" />
       <change beforePath="$PROJECT_DIR$/spec/examples.txt" afterPath="$PROJECT_DIR$/spec/examples.txt" />
       <change beforePath="$PROJECT_DIR$/spec/hathitrust_db/hathifile_set_spec.rb" afterPath="$PROJECT_DIR$/spec/hathitrust_db/hathifile_set_spec.rb" />
-      <change beforePath="$PROJECT_DIR$/spec/hathitrust_db/schema.rb" afterPath="$PROJECT_DIR$/spec/hathitrust_db/schema.rb" />
+      <change beforePath="$PROJECT_DIR$/spec/hathitrust_db/hathifile_spec.rb" afterPath="$PROJECT_DIR$/spec/hathitrust_db/hathifile_spec.rb" />
       <change beforePath="$PROJECT_DIR$/spec/spec_helper.rb" afterPath="$PROJECT_DIR$/spec/spec_helper.rb" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,36 +17,46 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/hathifiles_db@Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1511027452659" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" MODULE_NAME="hathifiles_db" />
+    <SUITE FILE_PATH="coverage/hathifiles_db@Unnamed.coverage" NAME="rspecs in spec Coverage Results" MODIFIED="1511194481987" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" MODULE_NAME="hathifiles_db" />
     <SUITE FILE_PATH="coverage/hathifiles_db@All_tests_in_spec__hathifiles_db.coverage" NAME="All tests in spec: hathifiles_db Coverage Results" MODIFIED="1511023270919" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="hathifiles_db" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="hathifile_set.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/hathifiles_db/hathifile_set.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="560">
+            <state relative-caret-position="405">
               <caret line="35" column="10" lean-forward="false" selection-start-line="35" selection-start-column="10" selection-end-line="35" selection-end-column="10" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="hathifile_set_spec.rb" pinned="false" current-in-tab="true">
+      <file leaf-file-name="hathifile_set_spec.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/spec/hathitrust_db/hathifile_set_spec.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="34" column="46" lean-forward="false" selection-start-line="34" selection-start-column="46" selection-end-line="34" selection-end-column="46" />
+            <state relative-caret-position="396">
+              <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="hathifile_spec.rb" pinned="false" current-in-tab="false">
+      <file leaf-file-name="attribute.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/.gem/ruby/2.4.0/gems/oga-2.10/lib/oga/xml/attribute.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="3" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="hathifile_spec.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/spec/hathitrust_db/hathifile_spec.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="48">
-              <caret line="3" column="35" lean-forward="false" selection-start-line="3" selection-start-column="35" selection-end-line="3" selection-end-column="35" />
+            <state relative-caret-position="30">
+              <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -56,7 +65,7 @@
       <file leaf-file-name="hathifiles.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/spec/data/hathifiles.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
+            <state relative-caret-position="2130">
               <caret line="142" column="246" lean-forward="false" selection-start-line="142" selection-start-column="242" selection-end-line="142" selection-end-column="246" />
               <folding />
             </state>
@@ -66,8 +75,18 @@
       <file leaf-file-name="spec_helper.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/spec/spec_helper.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+            <state relative-caret-position="90">
+              <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="compiler.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/.gem/ruby/2.4.0/gems/oga-2.10/lib/oga/xpath/compiler.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="152">
+              <caret line="1339" column="10" lean-forward="false" selection-start-line="1339" selection-start-column="10" selection-end-line="1339" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -86,18 +105,8 @@
       <file leaf-file-name="schema.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/spec/hathitrust_db/schema.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="16">
+            <state relative-caret-position="15">
               <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="base.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/hathifiles_db/schema/base.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-282">
-              <caret line="0" column="32" lean-forward="false" selection-start-line="0" selection-start-column="32" selection-end-line="0" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -106,18 +115,8 @@
       <file leaf-file-name="hathifile.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/hathifiles_db/hathifile.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="73">
-              <caret line="16" column="47" lean-forward="true" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="47" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="240">
+              <caret line="16" column="47" lean-forward="false" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -150,10 +149,10 @@
         <option value="$PROJECT_DIR$/lib/hathifiles_db/schema/base.rb" />
         <option value="$PROJECT_DIR$/lib/hathifiles_db/hathifile.rb" />
         <option value="$PROJECT_DIR$/spec/hathitrust_db/schema.rb" />
-        <option value="$PROJECT_DIR$/spec/spec_helper.rb" />
         <option value="$PROJECT_DIR$/lib/hathifiles_db/hathifile_set.rb" />
-        <option value="$PROJECT_DIR$/spec/hathitrust_db/hathifile_spec.rb" />
+        <option value="$PROJECT_DIR$/spec/spec_helper.rb" />
         <option value="$PROJECT_DIR$/spec/hathitrust_db/hathifile_set_spec.rb" />
+        <option value="$PROJECT_DIR$/spec/hathitrust_db/hathifile_spec.rb" />
       </list>
     </option>
   </component>
@@ -164,10 +163,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="123" />
-    <option name="y" value="32" />
-    <option name="width" value="1145" />
-    <option name="height" value="768" />
+    <option name="x" value="153" />
+    <option name="y" value="77" />
+    <option name="width" value="1284" />
+    <option name="height" value="972" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -200,8 +199,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -237,10 +234,50 @@
               <item name="spec" type="462c0819:PsiDirectoryNode" />
               <item name="hathitrust_db" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="hathifiles_db" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+            <path>
+              <item name="hathifiles_db" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="oga (v2.10, ruby-2.4.2-p198) [gem]" type="70bed36:NamedLibraryElementNode" />
+            </path>
+            <path>
+              <item name="hathifiles_db" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="oga (v2.10, ruby-2.4.2-p198) [gem]" type="70bed36:NamedLibraryElementNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hathifiles_db" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="oga (v2.10, ruby-2.4.2-p198) [gem]" type="70bed36:NamedLibraryElementNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="oga" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hathifiles_db" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="oga (v2.10, ruby-2.4.2-p198) [gem]" type="70bed36:NamedLibraryElementNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="oga" type="462c0819:PsiDirectoryNode" />
+              <item name="xml" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hathifiles_db" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="oga (v2.10, ruby-2.4.2-p198) [gem]" type="70bed36:NamedLibraryElementNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="oga" type="462c0819:PsiDirectoryNode" />
+              <item name="xpath" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -262,7 +299,7 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="Unnamed" type="RSpecRunConfigurationType" factoryName="RSpec">
+    <configuration name="rspecs in spec" type="RSpecRunConfigurationType" factoryName="RSpec">
       <predefined_log_file id="RUBY_RSPEC" enabled="true" />
       <module name="hathifiles_db" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
@@ -271,7 +308,7 @@
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
       <envs />
-      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="true" />
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
       <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
       <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov">
         <COVERAGE_PATTERN ENABLED="true">
@@ -304,6 +341,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1511022559846</updated>
+      <workItem from="1511192917505" duration="1576000" />
     </task>
     <task id="LOCAL-00001" summary="clean up circular rquires">
       <created>1511024432797</created>
@@ -316,47 +354,52 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unnamed - 2017.11.18 at 12h 03m 17s.xml">
+    <history-entry file="Unnamed - 2017.11.20 at 10h 51m 37s.xml">
       <configuration name="Unnamed" configurationId="RSpecRunConfigurationType" />
     </history-entry>
-    <history-entry file="Unnamed - 2017.11.18 at 12h 04m 07s.xml">
+    <history-entry file="Unnamed - 2017.11.20 at 10h 52m 24s.xml">
       <configuration name="Unnamed" configurationId="RSpecRunConfigurationType" />
     </history-entry>
-    <history-entry file="Unnamed - 2017.11.18 at 12h 17m 22s.xml">
+    <history-entry file="Unnamed - 2017.11.20 at 10h 55m 19s.xml">
       <configuration name="Unnamed" configurationId="RSpecRunConfigurationType" />
     </history-entry>
-    <history-entry file="Unnamed - 2017.11.18 at 12h 19m 46s.xml">
+    <history-entry file="Unnamed - 2017.11.20 at 10h 55m 35s.xml">
       <configuration name="Unnamed" configurationId="RSpecRunConfigurationType" />
     </history-entry>
-    <history-entry file="Unnamed - 2017.11.18 at 12h 20m 54s.xml">
+    <history-entry file="Unnamed - 2017.11.20 at 10h 55m 43s.xml">
       <configuration name="Unnamed" configurationId="RSpecRunConfigurationType" />
     </history-entry>
-    <history-entry file="Unnamed - 2017.11.18 at 12h 22m 35s.xml">
+    <history-entry file="Unnamed - 2017.11.20 at 10h 56m 21s.xml">
       <configuration name="Unnamed" configurationId="RSpecRunConfigurationType" />
     </history-entry>
-    <history-entry file="Unnamed - 2017.11.18 at 12h 22m 45s.xml">
-      <configuration name="Unnamed" configurationId="RSpecRunConfigurationType" />
+    <history-entry file="rspecs_in_spec - 2017.11.20 at 11h 13m 42s.xml">
+      <configuration name="rspecs in spec" configurationId="RSpecRunConfigurationType" />
     </history-entry>
-    <history-entry file="Unnamed - 2017.11.18 at 12h 27m 45s.xml">
-      <configuration name="Unnamed" configurationId="RSpecRunConfigurationType" />
+    <history-entry file="rspecs_in_spec - 2017.11.20 at 11h 14m 10s.xml">
+      <configuration name="rspecs in spec" configurationId="RSpecRunConfigurationType" />
     </history-entry>
-    <history-entry file="Unnamed - 2017.11.18 at 12h 49m 18s.xml">
-      <configuration name="Unnamed" configurationId="RSpecRunConfigurationType" />
+    <history-entry file="rspecs_in_spec - 2017.11.20 at 11h 14m 21s.xml">
+      <configuration name="rspecs in spec" configurationId="RSpecRunConfigurationType" />
     </history-entry>
-    <history-entry file="Unnamed - 2017.11.18 at 12h 50m 53s.xml">
-      <configuration name="Unnamed" configurationId="RSpecRunConfigurationType" />
+    <history-entry file="rspecs_in_spec - 2017.11.20 at 11h 14m 43s.xml">
+      <configuration name="rspecs in spec" configurationId="RSpecRunConfigurationType" />
     </history-entry>
   </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="1576000" />
+  </component>
   <component name="ToolWindowManager">
-    <frame x="123" y="32" width="1145" height="768" extended-state="0" />
+    <frame x="153" y="77" width="1284" height="972" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17225748" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15539452" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4383358" sideWeight="0.5031732" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.44279346" sideWeight="0.49682683" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.44260487" sideWeight="0.49682683" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Floobits" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
@@ -367,6 +410,7 @@
       <window_info id="Run Dashboard" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -385,6 +429,86 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/lib/hathifiles_db/hathifile_set.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="35" column="10" lean-forward="false" selection-start-line="35" selection-start-column="10" selection-end-line="35" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spec/hathitrust_db/hathifile_spec.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="35" lean-forward="false" selection-start-line="3" selection-start-column="35" selection-end-line="3" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spec/data/hathifiles.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2130">
+          <caret line="142" column="246" lean-forward="false" selection-start-line="142" selection-start-column="242" selection-end-line="142" selection-end-column="246" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spec/spec_helper.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="615">
+          <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spec/examples.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spec/hathitrust_db/schema.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/hathifiles_db/schema/base.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="32" lean-forward="false" selection-start-line="0" selection-start-column="32" selection-end-line="0" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/hathifiles_db/hathifile.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="47" lean-forward="true" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spec/hathitrust_db/hathifile_set_spec.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="34" column="46" lean-forward="false" selection-start-line="34" selection-start-column="46" selection-end-line="34" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Gemfile">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="32">
@@ -397,7 +521,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="266">
           <caret line="27" column="34" lean-forward="false" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -413,7 +536,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="16">
           <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -437,13 +559,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="233">
           <caret line="29" column="21" lean-forward="false" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/hathifiles_db/schema/base.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-282">
+        <state relative-caret-position="0">
           <caret line="0" column="32" lean-forward="false" selection-start-line="0" selection-start-column="32" selection-end-line="0" selection-end-column="32" />
           <folding />
         </state>
@@ -457,14 +578,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spec/hathitrust_db/schema.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/spec/examples.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -473,50 +586,74 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spec/spec_helper.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/spec/data/hathifiles.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
+        <state relative-caret-position="2130">
           <caret line="142" column="246" lean-forward="false" selection-start-line="142" selection-start-column="242" selection-end-line="142" selection-end-column="246" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/hathifiles_db/hathifile_set.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="35" column="10" lean-forward="false" selection-start-line="35" selection-start-column="10" selection-end-line="35" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spec/hathitrust_db/hathifile_spec.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="3" column="35" lean-forward="false" selection-start-line="3" selection-start-column="35" selection-end-line="3" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/hathifiles_db/hathifile.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="73">
-          <caret line="16" column="47" lean-forward="true" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="47" />
+        <state relative-caret-position="240">
+          <caret line="16" column="47" lean-forward="false" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.gem/ruby/2.4.0/gems/oga-2.10/lib/oga/xml/attribute.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="3" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spec/hathitrust_db/schema.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.gem/ruby/2.4.0/gems/oga-2.10/lib/oga/xpath/compiler.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="1339" column="10" lean-forward="false" selection-start-line="1339" selection-start-column="10" selection-end-line="1339" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spec/spec_helper.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/hathifiles_db/hathifile_set.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="35" column="10" lean-forward="false" selection-start-line="35" selection-start-column="10" selection-end-line="35" selection-end-column="10" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/spec/hathitrust_db/hathifile_set_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="34" column="46" lean-forward="false" selection-start-line="34" selection-start-column="46" selection-end-line="34" selection-end-column="46" />
+        <state relative-caret-position="396">
+          <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spec/hathitrust_db/hathifile_spec.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding />
         </state>
       </provider>
