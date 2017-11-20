@@ -12,18 +12,6 @@ module HathifilesDB
   class HathifileSet
 
     include Enumerable
-    def each
-      return enum_for(:each) unless block_given?
-      catchup_files.each {|y| yield y}
-    end
-
-    def fullfile
-      self.find{|x| x.full?}
-    end
-
-    def update_files
-      self.find_all{|x| !x.full?}
-    end
 
     def self.new_from_web(last_load_date:, url: HathifilesDB::HATHIFILES_LIST_URL)
       html = self.fetch_html(url)
@@ -41,6 +29,28 @@ module HathifilesDB
                      .sort {|x, y| x.datestamp <=> y.datestamp}
       @last_load_date = last_load_date
     end
+
+    # This is mostly for testing
+    def truncate(yyyymmdd)
+      all.delete_if{|h| h.datestamp > yyyymmdd}
+      self
+    end
+
+
+    # Iterator
+    def each
+      return enum_for(:each) unless block_given?
+      catchup_files.each {|y| yield y}
+    end
+
+    def fullfile
+      self.find{|x| x.full?}
+    end
+
+    def update_files
+      self.find_all{|x| !x.full?}
+    end
+
 
     # Which files need to be loaded to catch up?
     def catchup_files(last_load_YYYYMMDD = last_load_date)

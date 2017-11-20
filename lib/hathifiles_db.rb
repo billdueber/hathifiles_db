@@ -3,8 +3,10 @@ require 'dry-auto_inject'
 require 'hathifiles_db/intermediate_tsv'
 
 require 'yell'
-
 Log = Yell.new STDOUT
+
+
+__END__
 
 module HathifilesDB
   db = Sequel.connect('sqlite://hf.db')

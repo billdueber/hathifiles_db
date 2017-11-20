@@ -1,3 +1,5 @@
+require 'rspec'
+
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
@@ -18,7 +20,15 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 end
 
+# Set up a db for testing
 
+require 'dry-auto_inject'
+require 'sequel'
+module HathifilesDB
+  Inject = Dry::AutoInject({'db' => Sequel.connect('sqlite:/') })
+end
+
+# Load test data
 require 'pathname'
 DDIR = Pathname.new(__dir__) + 'data'
 
