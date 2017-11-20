@@ -6,7 +6,6 @@ require 'yell'
 Log = Yell.new STDOUT
 
 
-__END__
 
 module HathifilesDB
   db = Sequel.connect('sqlite://hf.db')
@@ -52,9 +51,6 @@ Log.info "Fetching #{index_file.name}"
 index_file.each_with_index do |rawline, i|
   Log.info "Starting to index #{index_file.name}" if i == 0
   Log.info "%12s written to tsv file" % ppn(i)  if i % interval == 0 and i > 0
-  # schemas_to_target.values.each do |s|
-  #   s << rawline
-  # end
 
   tsvs.each do |tsv|
     tsv << rawline
