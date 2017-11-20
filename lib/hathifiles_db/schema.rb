@@ -37,5 +37,12 @@ module HathifilesDB
       end
     end
 
+    def self.drop_all
+      subschema.each do |klass|
+        inst = klass.new
+        inst.drop_table
+      end
+    end
+
   end
 end

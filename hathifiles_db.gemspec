@@ -29,6 +29,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'rest-client'
   spec.add_dependency 'sequel'
   spec.add_dependency 'oga'
+  spec.add_dependency 'yell'
   # spec.add_dependency 'thor'
   spec.add_dependency 'library_stdnums'
 

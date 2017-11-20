@@ -23,6 +23,7 @@ module HathifilesDB
     # simply give it a file path on disk in `localfile`
     def io(url = self.url, localfile: nil)
       file_path = if localfile.nil?
+                    puts "Getting file #{url}"
                     RestClient::Request.execute(
                       method:       :get,
                       url:          url,

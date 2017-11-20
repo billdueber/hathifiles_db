@@ -4,13 +4,20 @@ module HathifilesDB
 
     attr_reader :writable, :number_of_columns
 
+    TSVDIR = ENV['TSVDIR']
+
     def initialize(filename_or_io, schema:, writeable: false)
       opts               = if writeable
                              "w:utf-8"
                            else
                              "r:utf-8"
                            end
-      @io                = filename_or_io.respond_to?(:read) ? filename_or_io : File.open(filename_or_io, opts)
+      @io                = if filename_or_io.respond_to?(:read)
+                             filename_or_io
+                           else
+                             fname = File.join(TSVDIR, filename_or_io)
+                             File.open(fname, opts)
+                           end
       @writable          = writeable
       @schema            = schema
       @number_of_columns = schema.hathifile_tsv_columns.size
@@ -28,7 +35,7 @@ module HathifilesDB
       return if insertables.empty?
       insertables = [insertables] unless insertables.first.kind_of? Array
       insertables.each do |hfl|
-        self.add_line hfl.map{|x| /"/.match(x) ? '"' << x.gsub('"', '""') << '"' : x }
+        self.add_line hfl.map {|x| /"/.match(x) ? '"' << x.gsub('"', '""') << '"' : x}
       end
     end
 

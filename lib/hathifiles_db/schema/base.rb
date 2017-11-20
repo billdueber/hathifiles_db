@@ -11,17 +11,41 @@ module HathifilesDB
         raise "Need to set in subclass"
       end
 
+      def exists?
+        db.tables.include? table_name
+      end
+
+
       def table
         db[table_name]
       end
 
-      def <<(hline_as_array)
-        insertables = hf_line_data(hline_as_array)
-        return if insertables.empty?
-        insertables = [insertables] unless insertables.first.kind_of? Array
-        insertables.each do |hfl|
-          table.insert hfl
+      def <<(hlines_as_array)
+        return if hlines_as_array.empty?
+        hlines = if hlines_as_array.first.kind_of? Array
+                   hlines_as_array
+                 else
+                   [hlines_as_array]
+                 end
+        add_many_hf_lines(hlines)
+      end
+
+      def add_many_hf_lines(bunch_of_lines)
+        return if bunch_of_lines.empty?
+        insertables = bunch_of_lines.map do |hline_as_array|
+          hf_line_data(hline_as_array)
+        end.flatten(1)
+
+
+        ids = bunch_of_lines.map(&:first)
+        delete_by_id(ids)
+        begin
+          table.import(columns, insertables, commit_every: bunch_of_lines.size)
+        rescue => e
+          puts "OOPS: #{table_name}: #{insertables}"
+          exit(1)
         end
+
       end
 
 
@@ -31,6 +55,7 @@ module HathifilesDB
 
       def hathifile_tsv_column_indexes
         @hf_column_indexes ||= hathifile_tsv_columns.map {|x| HathifilesDB::Constants::HF_COLUMN_INDEXES[x]}
+
       end
 
       def raw_hf_line_data(hathifile_line_as_array)
@@ -38,7 +63,7 @@ module HathifilesDB
       end
 
       def hf_line_data(hathifile_line_as_array)
-        process(raw_hf_line_data(hathifile_line_as_array))
+        [process(raw_hf_line_data(hathifile_line_as_array))]
       end
 
       def process(arr)
@@ -95,25 +120,17 @@ module HathifilesDB
 
       def import_tsv(import_path, table_name: self.table_name.to_s)
         if db.uri =~ /sqlite/
-          import_csv_into_sqlite(import_path, table_name: table_name)
+          import_tsv_into_sqlite(import_path, table_name: table_name)
         end
       end
-      #
-      #
-      # def import_csv_into_sqlite(import_path, table_name: self.table_name.to_s)
-      #   dbname = db.uri.gsub(/\A.*?sqlite3?:\/\//, '')
-      #   IO.popen(["sqlite3", dbname], 'w+:utf-8') do |sqlite_client|
-      #     sqlite_client.puts '.mode csv'
-      #     sqlite_client.puts ".import #{import_path}  #{table_name}"
-      #     sqlite_client.close_write
-      #   end
-      # end
-      #
+
+
       def import_tsv_into_sqlite(import_path, table_name: self.table_name.to_s)
-        dbname = db.uri.gsub(/\A.*?sqlite3?:\/\//, '')
+        filename = File.join(ENV['TSVDIR'], import_path)
+        dbname   = db.uri.gsub(/\A.*?sqlite3?:\/\//, '')
         IO.popen(["sqlite3", dbname], 'w+:utf-8') do |sqlite_client|
           sqlite_client.puts '.mode tabs'
-          sqlite_client.puts ".import #{import_path}  #{table_name}"
+          sqlite_client.puts ".import #{filename}  #{table_name}"
           sqlite_client.close_write
         end
       end
