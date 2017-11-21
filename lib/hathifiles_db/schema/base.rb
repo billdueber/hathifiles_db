@@ -145,11 +145,16 @@ module HathifilesDB
 
         sqlite_client.puts 'pragma synchronous;'
         old_sync = sqlite_client.gets
+        sqlite_client.puts "pragma journal_mode;"
+        old_jmode = sqlite_client.gets
+
         s.puts 'pragma synchronous = 0;'
+        s.puts 'pragma journal_mode=WAL;'
 
         yield
 
         s.puts "pragma synchronous = #{old_sync}"
+        s.puts "pragma journal_mode=#{old_jmode};"
         s.close
       end
     end
