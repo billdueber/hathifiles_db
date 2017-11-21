@@ -1,3 +1,5 @@
+##### ARRRRGH! Need to update the bookkeeping table! ####
+
 $:.unshift 'lib'
 require 'yell'
 require 'sequel'
