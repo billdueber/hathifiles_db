@@ -1,3 +1,5 @@
+##### ARRRRGH! Need to update the bookkeeping table! ####
+
 $:.unshift 'lib'
 require 'yell'
 require 'sequel'
@@ -6,7 +8,13 @@ require 'dry-auto_inject'
 ENV['TSVDIR'] = '..'
 
 module HathifilesDB
-  db = Sequel.connect('sqlite://../hf.db')
+  connection_string = if defined? JRUBY_VERSION
+                        "jdbc:sqlite:///Users/dueberb/devel/hathitrust/hf.db"
+                      else
+                        'sqlite://../hf.db'
+                      end
+  
+  db = Sequel.connect(connection_string)
 
   Inject = Dry::AutoInject({"db" => db})
 end
@@ -26,14 +34,22 @@ require 'hathifiles_db/schema'
 ####################
 
 HathifilesDB::Schema.create_all unless HathifilesDB::Schema::ID.new.exists?
+
 bk  = HathifilesDB::Schema::Bookkeeping.new
 db  = bk.db
 
-set = HathifilesDB::HathifileSet.new_from_web(last_load_date: bk.last_updated)
+update_date = bk.last_updated
+#update_date = 20171117
+set = HathifilesDB::HathifileSet.new_from_web(last_load_date: update_date)
 
 
 ff = set.fullfile
-Log.info "Full file is #{ff.name}" if ff
+if ff
+  Log.info "Full file is #{ff.name}"
+else
+  Log.info "No need to update from full file. Continuing"
+end
+
 Log.info "Update files\n  #{set.update_files.map(&:name).join("\n  ")}"
 
 recent = set.update_files.last
@@ -102,5 +118,9 @@ set.catchup_files.each do |index_file|
   end
 end
 
-@schemas_to_target.each {|s| s.rec}
+@schemas_to_target.each_pair do |table, schema|
+  Log.info "Adding indexes back to #{table}"
+  schema.create_indexes
+end
+
 Log.info "Done"

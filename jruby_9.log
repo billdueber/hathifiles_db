@@ -1,0 +1,215 @@
+(Re)creating table oclc
+(Re)creating table issn
+(Re)creating table isbn
+(Re)creating table lccn
+(Re)creating table bib_format_codes
+(Re)creating table bookkeeping
+(Re)creating table id
+2017-11-21T00:43:26-05:00 [ INFO] 51436 : Full file is hathi_full_20171101.txt.gz
+2017-11-21T00:43:26-05:00 [ INFO] 51436 : Update files
+  hathi_upd_20171101.txt.gz
+  hathi_upd_20171102.txt.gz
+  hathi_upd_20171103.txt.gz
+  hathi_upd_20171104.txt.gz
+  hathi_upd_20171105.txt.gz
+  hathi_upd_20171106.txt.gz
+  hathi_upd_20171107.txt.gz
+  hathi_upd_20171108.txt.gz
+  hathi_upd_20171109.txt.gz
+  hathi_upd_20171110.txt.gz
+  hathi_upd_20171111.txt.gz
+  hathi_upd_20171112.txt.gz
+  hathi_upd_20171113.txt.gz
+  hathi_upd_20171114.txt.gz
+  hathi_upd_20171115.txt.gz
+  hathi_upd_20171116.txt.gz
+  hathi_upd_20171117.txt.gz
+  hathi_upd_20171118.txt.gz
+  hathi_upd_20171119.txt.gz
+2017-11-21T00:43:26-05:00 [ INFO] 51436 : Fetching hathi_full_20171101.txt.gz
+2017-11-21T00:43:26-05:00 [ WARN] 51436 : Need to start with full file. Gonna take a bit
+2017-11-21T00:43:26-05:00 [ WARN] 51436 : Dumping full file to tab-delimited files for bulk import
+Getting file https://www.hathitrust.org/filebrowser/download/241313
+2017-11-21T01:00:46-05:00 [ INFO] 51436 : Starting to dump hathi_full_20171101.txt.gz to tab-delimited files
+2017-11-21T01:00:54-05:00 [ INFO] 51436 :      250_000 items written to tsv files
+2017-11-21T01:00:59-05:00 [ INFO] 51436 :      500_000 items written to tsv files
+2017-11-21T01:01:08-05:00 [ INFO] 51436 :      750_000 items written to tsv files
+2017-11-21T01:01:15-05:00 [ INFO] 51436 :    1_000_000 items written to tsv files
+2017-11-21T01:01:20-05:00 [ INFO] 51436 :    1_250_000 items written to tsv files
+2017-11-21T01:01:26-05:00 [ INFO] 51436 :    1_500_000 items written to tsv files
+2017-11-21T01:01:31-05:00 [ INFO] 51436 :    1_750_000 items written to tsv files
+2017-11-21T01:01:36-05:00 [ INFO] 51436 :    2_000_000 items written to tsv files
+2017-11-21T01:01:41-05:00 [ INFO] 51436 :    2_250_000 items written to tsv files
+2017-11-21T01:01:47-05:00 [ INFO] 51436 :    2_500_000 items written to tsv files
+2017-11-21T01:01:54-05:00 [ INFO] 51436 :    2_750_000 items written to tsv files
+2017-11-21T01:02:01-05:00 [ INFO] 51436 :    3_000_000 items written to tsv files
+2017-11-21T01:02:07-05:00 [ INFO] 51436 :    3_250_000 items written to tsv files
+2017-11-21T01:02:14-05:00 [ INFO] 51436 :    3_500_000 items written to tsv files
+2017-11-21T01:02:19-05:00 [ INFO] 51436 :    3_750_000 items written to tsv files
+2017-11-21T01:02:25-05:00 [ INFO] 51436 :    4_000_000 items written to tsv files
+2017-11-21T01:02:31-05:00 [ INFO] 51436 :    4_250_000 items written to tsv files
+2017-11-21T01:02:36-05:00 [ INFO] 51436 :    4_500_000 items written to tsv files
+2017-11-21T01:02:42-05:00 [ INFO] 51436 :    4_750_000 items written to tsv files
+2017-11-21T01:02:47-05:00 [ INFO] 51436 :    5_000_000 items written to tsv files
+2017-11-21T01:02:54-05:00 [ INFO] 51436 :    5_250_000 items written to tsv files
+2017-11-21T01:03:02-05:00 [ INFO] 51436 :    5_500_000 items written to tsv files
+2017-11-21T01:03:10-05:00 [ INFO] 51436 :    5_750_000 items written to tsv files
+2017-11-21T01:03:18-05:00 [ INFO] 51436 :    6_000_000 items written to tsv files
+2017-11-21T01:03:25-05:00 [ INFO] 51436 :    6_250_000 items written to tsv files
+2017-11-21T01:03:35-05:00 [ INFO] 51436 :    6_500_000 items written to tsv files
+2017-11-21T01:03:44-05:00 [ INFO] 51436 :    6_750_000 items written to tsv files
+2017-11-21T01:03:54-05:00 [ INFO] 51436 :    7_000_000 items written to tsv files
+2017-11-21T01:04:00-05:00 [ INFO] 51436 :    7_250_000 items written to tsv files
+2017-11-21T01:04:06-05:00 [ INFO] 51436 :    7_500_000 items written to tsv files
+2017-11-21T01:04:13-05:00 [ INFO] 51436 :    7_750_000 items written to tsv files
+2017-11-21T01:04:18-05:00 [ INFO] 51436 :    8_000_000 items written to tsv files
+2017-11-21T01:04:24-05:00 [ INFO] 51436 :    8_250_000 items written to tsv files
+2017-11-21T01:04:31-05:00 [ INFO] 51436 :    8_500_000 items written to tsv files
+2017-11-21T01:04:39-05:00 [ INFO] 51436 :    8_750_000 items written to tsv files
+2017-11-21T01:04:45-05:00 [ INFO] 51436 :    9_000_000 items written to tsv files
+2017-11-21T01:04:51-05:00 [ INFO] 51436 :    9_250_000 items written to tsv files
+2017-11-21T01:04:57-05:00 [ INFO] 51436 :    9_500_000 items written to tsv files
+2017-11-21T01:05:04-05:00 [ INFO] 51436 :    9_750_000 items written to tsv files
+2017-11-21T01:05:10-05:00 [ INFO] 51436 :   10_000_000 items written to tsv files
+2017-11-21T01:05:15-05:00 [ INFO] 51436 :   10_250_000 items written to tsv files
+2017-11-21T01:05:20-05:00 [ INFO] 51436 :   10_500_000 items written to tsv files
+2017-11-21T01:05:26-05:00 [ INFO] 51436 :   10_750_000 items written to tsv files
+2017-11-21T01:05:32-05:00 [ INFO] 51436 :   11_000_000 items written to tsv files
+2017-11-21T01:05:37-05:00 [ INFO] 51436 :   11_250_000 items written to tsv files
+2017-11-21T01:05:43-05:00 [ INFO] 51436 :   11_500_000 items written to tsv files
+2017-11-21T01:05:49-05:00 [ INFO] 51436 :   11_750_000 items written to tsv files
+2017-11-21T01:05:54-05:00 [ INFO] 51436 :   12_000_000 items written to tsv files
+2017-11-21T01:05:58-05:00 [ INFO] 51436 :   12_250_000 items written to tsv files
+2017-11-21T01:06:02-05:00 [ INFO] 51436 :   12_500_000 items written to tsv files
+2017-11-21T01:06:09-05:00 [ INFO] 51436 :   12_750_000 items written to tsv files
+2017-11-21T01:06:14-05:00 [ INFO] 51436 :   13_000_000 items written to tsv files
+2017-11-21T01:06:19-05:00 [ INFO] 51436 :   13_250_000 items written to tsv files
+2017-11-21T01:06:24-05:00 [ INFO] 51436 :   13_500_000 items written to tsv files
+2017-11-21T01:06:29-05:00 [ INFO] 51436 :   13_750_000 items written to tsv files
+2017-11-21T01:06:35-05:00 [ INFO] 51436 :   14_000_000 items written to tsv files
+2017-11-21T01:06:40-05:00 [ INFO] 51436 :   14_250_000 items written to tsv files
+2017-11-21T01:06:45-05:00 [ INFO] 51436 :   14_500_000 items written to tsv files
+2017-11-21T01:06:50-05:00 [ INFO] 51436 :   14_750_000 items written to tsv files
+2017-11-21T01:06:55-05:00 [ INFO] 51436 :   15_000_000 items written to tsv files
+2017-11-21T01:07:02-05:00 [ INFO] 51436 :   15_250_000 items written to tsv files
+2017-11-21T01:07:08-05:00 [ INFO] 51436 :   15_500_000 items written to tsv files
+2017-11-21T01:07:15-05:00 [ INFO] 51436 :   15_750_000 items written to tsv files
+2017-11-21T01:07:19-05:00 [ INFO] 51436 : 
+Beginning import of id
+2017-11-21T01:10:25-05:00 [ INFO] 51436 : 
+Beginning import of oclc
+2017-11-21T01:10:51-05:00 [ INFO] 51436 : 
+Beginning import of isbn
+2017-11-21T01:10:58-05:00 [ INFO] 51436 : 
+Beginning import of issn
+2017-11-21T01:11:02-05:00 [ INFO] 51436 : 
+Beginning import of lccn
+2017-11-21T01:11:17-05:00 [ INFO] 51436 : Adding indexes to id
+2017-11-21T01:14:18-05:00 [ INFO] 51436 : Adding indexes to oclc
+2017-11-21T01:14:44-05:00 [ INFO] 51436 : Adding indexes to isbn
+2017-11-21T01:14:50-05:00 [ INFO] 51436 : Adding indexes to issn
+2017-11-21T01:14:53-05:00 [ INFO] 51436 : Adding indexes to lccn
+2017-11-21T01:15:06-05:00 [ INFO] 51436 : Fetching hathi_upd_20171101.txt.gz
+2017-11-21T01:15:06-05:00 [ INFO] 51436 : Updating from hathi_upd_20171101.txt.gz
+Getting file https://www.hathitrust.org/filebrowser/download/241413
+2017-11-21T01:15:16-05:00 [ INFO] 51436 :    5000 items
+2017-11-21T01:15:22-05:00 [ INFO] 51436 :    10000 items
+2017-11-21T01:15:24-05:00 [ INFO] 51436 : Fetching hathi_upd_20171102.txt.gz
+2017-11-21T01:15:24-05:00 [ INFO] 51436 : Updating from hathi_upd_20171102.txt.gz
+Getting file https://www.hathitrust.org/filebrowser/download/241649
+2017-11-21T01:15:31-05:00 [ INFO] 51436 :    5000 items
+2017-11-21T01:15:36-05:00 [ INFO] 51436 :    10000 items
+2017-11-21T01:15:38-05:00 [ INFO] 51436 : Fetching hathi_upd_20171103.txt.gz
+2017-11-21T01:15:38-05:00 [ INFO] 51436 : Updating from hathi_upd_20171103.txt.gz
+Getting file https://www.hathitrust.org/filebrowser/download/241670
+2017-11-21T01:15:44-05:00 [ INFO] 51436 :    5000 items
+2017-11-21T01:15:47-05:00 [ INFO] 51436 :    10000 items
+2017-11-21T01:15:47-05:00 [ INFO] 51436 : Fetching hathi_upd_20171104.txt.gz
+2017-11-21T01:15:47-05:00 [ INFO] 51436 : Updating from hathi_upd_20171104.txt.gz
+Getting file https://www.hathitrust.org/filebrowser/download/241731
+2017-11-21T01:15:58-05:00 [ INFO] 51436 :    5000 items
+2017-11-21T01:16:02-05:00 [ INFO] 51436 :    10000 items
+2017-11-21T01:16:03-05:00 [ INFO] 51436 : Fetching hathi_upd_20171105.txt.gz
+2017-11-21T01:16:03-05:00 [ INFO] 51436 : Updating from hathi_upd_20171105.txt.gz
+Getting file https://www.hathitrust.org/filebrowser/download/241824
+2017-11-21T01:16:11-05:00 [ INFO] 51436 :    5000 items
+2017-11-21T01:16:12-05:00 [ INFO] 51436 : Fetching hathi_upd_20171106.txt.gz
+2017-11-21T01:16:12-05:00 [ INFO] 51436 : Updating from hathi_upd_20171106.txt.gz
+Getting file https://www.hathitrust.org/filebrowser/download/241828
+2017-11-21T01:16:19-05:00 [ INFO] 51436 :    5000 items
+2017-11-21T01:16:23-05:00 [ INFO] 51436 :    10000 items
+2017-11-21T01:16:23-05:00 [ INFO] 51436 : Fetching hathi_upd_20171107.txt.gz
+2017-11-21T01:16:23-05:00 [ INFO] 51436 : Updating from hathi_upd_20171107.txt.gz
+Getting file https://www.hathitrust.org/filebrowser/download/241849
+2017-11-21T01:16:29-05:00 [ INFO] 51436 :    5000 items
+2017-11-21T01:16:33-05:00 [ INFO] 51436 :    10000 items
+2017-11-21T01:16:33-05:00 [ INFO] 51436 : Fetching hathi_upd_20171108.txt.gz
+2017-11-21T01:16:33-05:00 [ INFO] 51436 : Updating from hathi_upd_20171108.txt.gz
+Getting file https://www.hathitrust.org/filebrowser/download/241890
+2017-11-21T01:16:39-05:00 [ INFO] 51436 :    5000 items
+2017-11-21T01:16:42-05:00 [ INFO] 51436 :    10000 items
+2017-11-21T01:16:43-05:00 [ INFO] 51436 : Fetching hathi_upd_20171109.txt.gz
+2017-11-21T01:16:43-05:00 [ INFO] 51436 : Updating from hathi_upd_20171109.txt.gz
+Getting file https://www.hathitrust.org/filebrowser/download/242030
+2017-11-21T01:16:48-05:00 [ INFO] 51436 :    5000 items
+2017-11-21T01:16:51-05:00 [ INFO] 51436 :    10000 items
+2017-11-21T01:16:52-05:00 [ INFO] 51436 : Fetching hathi_upd_20171110.txt.gz
+2017-11-21T01:16:52-05:00 [ INFO] 51436 : Updating from hathi_upd_20171110.txt.gz
+Getting file https://www.hathitrust.org/filebrowser/download/242072
+2017-11-21T01:16:57-05:00 [ INFO] 51436 :    5000 items
+2017-11-21T01:17:01-05:00 [ INFO] 51436 :    10000 items
+2017-11-21T01:17:01-05:00 [ INFO] 51436 : Fetching hathi_upd_20171111.txt.gz
+2017-11-21T01:17:01-05:00 [ INFO] 51436 : Updating from hathi_upd_20171111.txt.gz
+Getting file https://www.hathitrust.org/filebrowser/download/242173
+2017-11-21T01:17:06-05:00 [ INFO] 51436 :    5000 items
+2017-11-21T01:17:10-05:00 [ INFO] 51436 :    10000 items
+2017-11-21T01:17:11-05:00 [ INFO] 51436 : Fetching hathi_upd_20171112.txt.gz
+2017-11-21T01:17:11-05:00 [ INFO] 51436 : Updating from hathi_upd_20171112.txt.gz
+Getting file https://www.hathitrust.org/filebrowser/download/242629
+2017-11-21T01:17:14-05:00 [ INFO] 51436 :    5000 items
+2017-11-21T01:17:17-05:00 [ INFO] 51436 :    10000 items
+2017-11-21T01:17:17-05:00 [ INFO] 51436 : Fetching hathi_upd_20171113.txt.gz
+2017-11-21T01:17:17-05:00 [ INFO] 51436 : Updating from hathi_upd_20171113.txt.gz
+Getting file https://www.hathitrust.org/filebrowser/download/242671
+2017-11-21T01:17:22-05:00 [ INFO] 51436 :    5000 items
+2017-11-21T01:17:23-05:00 [ INFO] 51436 : Fetching hathi_upd_20171114.txt.gz
+2017-11-21T01:17:23-05:00 [ INFO] 51436 : Updating from hathi_upd_20171114.txt.gz
+Getting file https://www.hathitrust.org/filebrowser/download/242771
+2017-11-21T01:17:28-05:00 [ INFO] 51436 :    5000 items
+2017-11-21T01:17:30-05:00 [ INFO] 51436 :    10000 items
+2017-11-21T01:17:30-05:00 [ INFO] 51436 : Fetching hathi_upd_20171115.txt.gz
+2017-11-21T01:17:30-05:00 [ INFO] 51436 : Updating from hathi_upd_20171115.txt.gz
+Getting file https://www.hathitrust.org/filebrowser/download/242792
+2017-11-21T01:17:36-05:00 [ INFO] 51436 :    5000 items
+2017-11-21T01:17:38-05:00 [ INFO] 51436 :    10000 items
+2017-11-21T01:17:41-05:00 [ INFO] 51436 :    15000 items
+2017-11-21T01:17:42-05:00 [ INFO] 51436 :    20000 items
+2017-11-21T01:17:43-05:00 [ INFO] 51436 : Fetching hathi_upd_20171116.txt.gz
+2017-11-21T01:17:43-05:00 [ INFO] 51436 : Updating from hathi_upd_20171116.txt.gz
+Getting file https://www.hathitrust.org/filebrowser/download/242834
+2017-11-21T01:17:46-05:00 [ INFO] 51436 :    5000 items
+2017-11-21T01:17:47-05:00 [ INFO] 51436 :    10000 items
+2017-11-21T01:17:49-05:00 [ INFO] 51436 :    15000 items
+2017-11-21T01:17:52-05:00 [ INFO] 51436 :    20000 items
+2017-11-21T01:17:54-05:00 [ INFO] 51436 :    25000 items
+2017-11-21T01:17:55-05:00 [ INFO] 51436 : Fetching hathi_upd_20171117.txt.gz
+2017-11-21T01:17:55-05:00 [ INFO] 51436 : Updating from hathi_upd_20171117.txt.gz
+Getting file https://www.hathitrust.org/filebrowser/download/242934
+2017-11-21T01:17:56-05:00 [ INFO] 51436 : Fetching hathi_upd_20171118.txt.gz
+2017-11-21T01:17:56-05:00 [ INFO] 51436 : Updating from hathi_upd_20171118.txt.gz
+Getting file https://www.hathitrust.org/filebrowser/download/242956
+2017-11-21T01:18:02-05:00 [ INFO] 51436 :    5000 items
+2017-11-21T01:18:09-05:00 [ INFO] 51436 :    10000 items
+2017-11-21T01:18:11-05:00 [ INFO] 51436 :    15000 items
+2017-11-21T01:18:14-05:00 [ INFO] 51436 :    20000 items
+2017-11-21T01:18:17-05:00 [ INFO] 51436 :    25000 items
+2017-11-21T01:18:18-05:00 [ INFO] 51436 : Fetching hathi_upd_20171119.txt.gz
+2017-11-21T01:18:18-05:00 [ INFO] 51436 : Updating from hathi_upd_20171119.txt.gz
+Getting file https://www.hathitrust.org/filebrowser/download/243008
+2017-11-21T01:18:25-05:00 [ INFO] 51436 :    5000 items
+2017-11-21T01:18:28-05:00 [ INFO] 51436 : Adding indexes back to id
+2017-11-21T01:18:28-05:00 [ INFO] 51436 : Adding indexes back to oclc
+2017-11-21T01:18:28-05:00 [ INFO] 51436 : Adding indexes back to isbn
+2017-11-21T01:18:28-05:00 [ INFO] 51436 : Adding indexes back to issn
+2017-11-21T01:18:28-05:00 [ INFO] 51436 : Adding indexes back to lccn
+2017-11-21T01:18:28-05:00 [ INFO] 51436 : Done
