@@ -118,9 +118,8 @@ set.catchup_files.each do |index_file|
   end
 end
 
-@schemas_to_target.each_pair do |table, schema|
-  Log.info "Adding indexes back to #{table}"
-  schema.create_indexes
-end
+lud = set.catchup_files.last.datestamp
+Log.info "Setting last_updated date to #{lud}"
+bk.update(lud)
 
 Log.info "Done"
