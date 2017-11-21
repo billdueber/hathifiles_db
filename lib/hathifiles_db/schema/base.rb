@@ -2,7 +2,7 @@ require 'hathifiles_db/constants'
 module HathifilesDB
   module Schema
     class Base
-      include HathifilesDB::Inject["db"]
+      include HathifilesDB::Inject["db", "logger"]
 
       attr_reader :db
 

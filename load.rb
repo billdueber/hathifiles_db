@@ -6,24 +6,21 @@ require 'sequel'
 require 'dry-auto_inject'
 
 ENV['TSVDIR'] = '..'
-
+Log = Yell.new STDOUT
 module HathifilesDB
   connection_string = if defined? JRUBY_VERSION
-                        "jdbc:sqlite:///Users/dueberb/devel/hathitrust/hf.db"
+                        "jdbc:sqlite:///Users/dueberb/devel/hathi/hf.db"
                       else
                         'sqlite://../hf.db'
                       end
   
   db = Sequel.connect(connection_string)
 
-  Inject = Dry::AutoInject({"db" => db})
+  Inject = Dry::AutoInject({"db" => db, "logger" => ::Log})
 end
 
 
 require 'hathifiles_db'
-Log = Yell.new STDOUT
-
-
 require 'hathifiles_db/hathifile_set'
 require 'hathifiles_db/schema'
 
@@ -39,7 +36,7 @@ bk  = HathifilesDB::Schema::Bookkeeping.new
 db  = bk.db
 
 update_date = bk.last_updated
-#update_date = 20171117
+# update_date = 20171117
 set = HathifilesDB::HathifileSet.new_from_web(last_load_date: update_date)
 
 
@@ -63,7 +60,7 @@ end
 
 def add_full_file(hathifile)
   Log.warn "Need to start with full file. Gonna take a bit"
-  log_interval = 250_000
+  log_interval = 500_000
   @schemas_to_target.values.each do |s|
     s.drop_table
     s.create
@@ -84,7 +81,7 @@ def add_full_file(hathifile)
   end
 
   @schemas_to_target.each_pair do |table, schema|
-    Log.info "\nBeginning import of #{table}"
+    Log.info "Beginning import of #{table}"
     schema.import_tsv_into_sqlite("#{table}.tsv")
   end
 
