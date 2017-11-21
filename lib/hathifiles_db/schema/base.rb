@@ -135,6 +135,23 @@ module HathifilesDB
         end
       end
 
+      def with_fast_sql_flags(&blk)
+        with_fast_sqlite_flags &blk
+      end
+
+      def with_fast_sqlite_flags
+        dbname   = db.uri.gsub(/\A.*?sqlite3?:\/\//, '')
+        sqlite_client = Kernel.open("|sqlite3 hf.db", 'w+:utf-8'))
+
+        sqlite_client.puts 'pragma synchronous;'
+        old_sync = sqlite_client.gets
+        s.puts 'pragma synchronous = 0;'
+
+        yield
+
+        s.puts "pragma synchronous = #{old_sync}"
+        s.close
+      end
     end
   end
 end

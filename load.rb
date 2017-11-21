@@ -36,7 +36,7 @@ bk  = HathifilesDB::Schema::Bookkeeping.new
 db  = bk.db
 
 update_date = bk.last_updated
-# update_date = 20171117
+update_date = 20171117
 set = HathifilesDB::HathifileSet.new_from_web(last_load_date: update_date)
 
 
@@ -105,15 +105,17 @@ def add_update_file(hathifile)
   end
 end
 
-
-set.catchup_files.each do |index_file|
-  Log.info "Fetching #{index_file.name}"
-  if index_file.full?
-    add_full_file(index_file)
-  else
-    add_update_file(index_file)
+HathifilesDB::Schema::Base.new.with_fast_sql_flags do
+  set.catchup_files.each do |index_file|
+    Log.info "Fetching #{index_file.name}"
+    if index_file.full?
+      add_full_file(index_file)
+    else
+      add_update_file(index_file)
+    end
   end
 end
+
 
 lud = set.catchup_files.last.datestamp
 Log.info "Setting last_updated date to #{lud}"
